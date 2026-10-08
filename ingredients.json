@@ -1,0 +1,1382 @@
+{
+  "Allulose": {
+    "base_grams": 100.0,
+    "calories": 40.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 100.0,
+    "fiber_g": 0.0,
+    "sugar_g": 100.0,
+    "meal_type": "Baking",
+    "default_g_volume": "12.5 g per tbsp",
+    "food_type": "Sweetener",
+    "units": {
+      "tbsp": 12.5,
+      "tsp": 4.0,
+      "cup": 200.0
+    }
+  },
+  "Almond slices": {
+    "base_grams": 5.75,
+    "calories": 33.3,
+    "fat_g": 2.88,
+    "protein_g": 1.19,
+    "carbs_g": 1.25,
+    "fiber_g": 0.75,
+    "sugar_g": 0.25,
+    "meal_type": "Baking",
+    "default_g_volume": "4.38 g in 1 tbsp",
+    "food_type": "Nuts",
+    "units": {
+      "tbsp": 4.38
+    }
+  },
+  "Almonds whole roasted": {
+    "base_grams": 30.0,
+    "calories": 182.1,
+    "fat_g": 16.551,
+    "protein_g": 6.369,
+    "carbs_g": 5.304,
+    "fiber_g": 3.15,
+    "sugar_g": 1.2,
+    "meal_type": "Baking",
+    "default_g_volume": "30 g in 23 pcs",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 1.3043
+    }
+  },
+  "Apple Fuji": {
+    "base_grams": 150.0,
+    "calories": 77.0,
+    "fat_g": 0.26,
+    "protein_g": 0.39,
+    "carbs_g": 20.71,
+    "fiber_g": 3.6,
+    "sugar_g": 15.59,
+    "meal_type": "Baking",
+    "default_g_volume": "98g per cup",
+    "food_type": "Fruits, FRESH",
+    "units": {
+      "cup": 98.0
+    }
+  },
+  "Apple Washington Red Del": {
+    "base_grams": 150.0,
+    "calories": 79.0,
+    "fat_g": 0.25,
+    "protein_g": 0.39,
+    "carbs_g": 20.72,
+    "fiber_g": 3.6,
+    "sugar_g": 15.58,
+    "meal_type": "Baking",
+    "default_g_volume": "98g per cup",
+    "food_type": "Fruits, FRESH",
+    "units": {
+      "cup": 98.0
+    }
+  },
+  "Apricots dried": {
+    "base_grams": 25.0,
+    "calories": 60.0,
+    "fat_g": 0.13,
+    "protein_g": 0.85,
+    "carbs_g": 15.66,
+    "fiber_g": 1.8,
+    "sugar_g": 13.36,
+    "meal_type": "Dessert",
+    "default_g_volume": "6.7g per piece",
+    "food_type": "Fruits, dried",
+    "units": {
+      "piece": 6.7
+    }
+  },
+  "Avocado": {
+    "base_grams": 201.0,
+    "calories": 322.0,
+    "fat_g": 29.0,
+    "protein_g": 0.0,
+    "carbs_g": 17.0,
+    "fiber_g": 13.0,
+    "sugar_g": 0.0,
+    "meal_type": "Dessert",
+    "default_g_volume": "201g in 1 piece",
+    "food_type": "Fruits, FRESH",
+    "units": {
+      "piece": 201.0
+    }
+  },
+  "Baking powder": {
+    "base_grams": 4.6,
+    "calories": 2.4,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 1.1,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "4.6g per tsp",
+    "food_type": "Leavening",
+    "units": {
+      "tsp": 4.6
+    }
+  },
+  "Banana Saba": {
+    "base_grams": 100.0,
+    "calories": 120.0,
+    "fat_g": 0.3,
+    "protein_g": 1.3,
+    "carbs_g": 31.0,
+    "fiber_g": 2.6,
+    "sugar_g": 9.0,
+    "meal_type": "Dessert",
+    "default_g_volume": "150g per piece",
+    "food_type": "Fruits, Fresh",
+    "units": {
+      "tbsp": 14.0,
+      "tsp": 5.0,
+      "cup": 238.0,
+      "piece": 150.0
+    }
+  },
+  "Banana Lakatan": {
+    "base_grams": 100.0,
+    "calories": 90.0,
+    "fat_g": 0.3,
+    "protein_g": 1.0,
+    "carbs_g": 23.0,
+    "fiber_g": 2.6,
+    "sugar_g": 12.0,
+    "meal_type": "Dessert",
+    "default_g_volume": "100g per piece",
+    "food_type": "Fruits, Fresh",
+    "units": {
+      "tbsp": 14.0,
+      "tsp": 5.0,
+      "cup": 236.0,
+      "piece": 100.0
+    }
+  },
+  "Banana Cavendish": {
+    "base_grams": 100.0,
+    "calories": 89.0,
+    "fat_g": 0.3,
+    "protein_g": 1.1,
+    "carbs_g": 22.8,
+    "fiber_g": 2.6,
+    "sugar_g": 12.2,
+    "meal_type": "Dessert",
+    "default_g_volume": "118g per piece",
+    "food_type": "Fruits, Fresh",
+    "units": {
+      "tbsp": 14.0,
+      "tsp": 5.0,
+      "cup": 236.0,
+      "piece": 118.0
+    }
+  },
+  "Blueberries dried": {
+    "base_grams": 40.0,
+    "calories": 160.0,
+    "fat_g": 1.0,
+    "protein_g": 1.0,
+    "carbs_g": 32.0,
+    "fiber_g": 3.0,
+    "sugar_g": 27.0,
+    "meal_type": "Dessert",
+    "default_g_volume": "40g in 1/4 cup",
+    "food_type": "Fruits, dried",
+    "units": {
+      "cup": 160.0
+    }
+  },
+  "Blueberries fresh": {
+    "base_grams": 80.0,
+    "calories": 45.6,
+    "fat_g": 0.24,
+    "protein_g": 0.56,
+    "carbs_g": 11.6,
+    "fiber_g": 1.92,
+    "sugar_g": 8.0,
+    "meal_type": "Baking",
+    "default_g_volume": "0.42cup is 80g",
+    "food_type": "Fruits, dried",
+    "units": {
+      "cup": 190.4762
+    }
+  },
+  "Brazil nuts raw": {
+    "base_grams": 30.0,
+    "calories": 197.0,
+    "fat_g": 19.93,
+    "protein_g": 4.3,
+    "carbs_g": 3.68,
+    "fiber_g": 2.2,
+    "sugar_g": 0.7,
+    "meal_type": "Baking",
+    "default_g_volume": "10 pcs per 30g",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 3.0
+    }
+  },
+  "Butter": {
+    "base_grams": 14.2,
+    "calories": 102.0,
+    "fat_g": 11.5,
+    "protein_g": 0.1,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 14.2g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 14.2
+    }
+  },
+  "Cacao nibs": {
+    "base_grams": 9.0,
+    "calories": 58.0,
+    "fat_g": 4.7,
+    "protein_g": 1.3,
+    "carbs_g": 2.6,
+    "fiber_g": 1.5,
+    "sugar_g": 0.1,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 11.34g",
+    "food_type": "Topping",
+    "units": {
+      "tbsp": 11.34
+    }
+  },
+  "Cashews raw": {
+    "base_grams": 30.0,
+    "calories": 166.0,
+    "fat_g": 13.16,
+    "protein_g": 5.47,
+    "carbs_g": 9.06,
+    "fiber_g": 1.0,
+    "sugar_g": 1.77,
+    "meal_type": "Baking",
+    "default_g_volume": "15 halves in 30g",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 2.0
+    }
+  },
+  "Cashews roasted": {
+    "base_grams": 30.0,
+    "calories": 180.0,
+    "fat_g": 13.7,
+    "protein_g": 5.6,
+    "carbs_g": 8.7,
+    "fiber_g": 2.0,
+    "sugar_g": 3.0,
+    "meal_type": "Baking",
+    "default_g_volume": "15 halves in 30g",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 2.0
+    }
+  },
+  "Cheese cheddar shredded": {
+    "base_grams": 100.0,
+    "calories": 403.0,
+    "fat_g": 33.14,
+    "protein_g": 24.9,
+    "carbs_g": 1.28,
+    "fiber_g": 0.0,
+    "sugar_g": 0.52,
+    "meal_type": "Baking",
+    "default_g_volume": "29.4 g in 2 tbsp",
+    "food_type": "Cheese",
+    "units": {
+      "tbsp": 14.7
+    }
+  },
+  "Cheese cream cheese": {
+    "base_grams": 100.0,
+    "calories": 249.0,
+    "fat_g": 34.87,
+    "protein_g": 7.55,
+    "carbs_g": 2.66,
+    "fiber_g": 0.0,
+    "sugar_g": 0.2,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 15g",
+    "food_type": "Cheese",
+    "units": {
+      "tbsp": 15.0
+    }
+  },
+  "Cheese mozzarella shredded": {
+    "base_grams": 100.0,
+    "calories": 300.0,
+    "fat_g": 22.0,
+    "protein_g": 22.0,
+    "carbs_g": 2.2,
+    "fiber_g": 0.0,
+    "sugar_g": 1.0,
+    "meal_type": "Baking",
+    "default_g_volume": "28.1 g in 2 tbsp",
+    "food_type": "Cheese",
+    "units": {
+      "tbsp": 14.05
+    }
+  },
+  "Cheese parmesan Kraft": {
+    "base_grams": 5.0,
+    "calories": 20.0,
+    "fat_g": 1.5,
+    "protein_g": 2.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "2 tsp is 5g",
+    "food_type": "Cheese",
+    "units": {
+      "tsp": 2.5
+    }
+  },
+  "Cherries dried": {
+    "base_grams": 15.0,
+    "calories": 50.0,
+    "fat_g": 0.1,
+    "protein_g": 0.2,
+    "carbs_g": 12.0,
+    "fiber_g": 0.4,
+    "sugar_g": 10.0,
+    "meal_type": "Baking",
+    "default_g_volume": "6 pieces is 15g",
+    "food_type": "Fruits, dried",
+    "units": {
+      "piece": 2.5
+    }
+  },
+  "Chia seeds": {
+    "base_grams": 12.0,
+    "calories": 58.0,
+    "fat_g": 3.7,
+    "protein_g": 2.0,
+    "carbs_g": 5.1,
+    "fiber_g": 4.1,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "15g in 1 tbsp",
+    "food_type": "Seeds",
+    "units": {
+      "tbsp": 15.0
+    }
+  },
+  "Cinnamon dash": {
+    "base_grams": 1.0,
+    "calories": 1.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "0.69g in 1/4 tsp",
+    "food_type": "Flavoring",
+    "units": {
+      "tsp": 2.76
+    }
+  },
+  "Cocoa powder Goya": {
+    "base_grams": 8.0,
+    "calories": 33.0,
+    "fat_g": 1.0,
+    "protein_g": 2.0,
+    "carbs_g": 4.0,
+    "fiber_g": 3.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "8 g/ 2 Tbsp",
+    "food_type": "Flavoring",
+    "units": {
+      "tbsp": 4.0
+    }
+  },
+  "Cocoa powder Hershey's": {
+    "base_grams": 5.0,
+    "calories": 10.0,
+    "fat_g": 0.5,
+    "protein_g": 1.0,
+    "carbs_g": 3.0,
+    "fiber_g": 2.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "5 g/ 1 Tbsp",
+    "food_type": "Flavoring",
+    "units": {
+      "tbsp": 5.0
+    }
+  },
+  "Cranberries dried sweetened": {
+    "base_grams": 10.0,
+    "calories": 31.0,
+    "fat_g": 0.14,
+    "protein_g": 0.01,
+    "carbs_g": 8.24,
+    "fiber_g": 0.6,
+    "sugar_g": 6.5,
+    "meal_type": "Baking",
+    "default_g_volume": "10g in 1 tbsp",
+    "food_type": "Fruits, dried",
+    "units": {
+      "tbsp": 10.0
+    }
+  },
+  "Cream Coconut": {
+    "base_grams": 100.0,
+    "calories": 220.0,
+    "fat_g": 22.0,
+    "protein_g": 2.0,
+    "carbs_g": 4.0,
+    "fiber_g": 0.3,
+    "sugar_g": 2.4,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 100g",
+    "food_type": "Fats",
+    "units": {
+      "cup": 100.0
+    }
+  },
+  "Cream Nestle All Purpose": {
+    "base_grams": 244.0,
+    "calories": 675.0,
+    "fat_g": 67.5,
+    "protein_g": 6.25,
+    "carbs_g": 10.0,
+    "fiber_g": 0.0,
+    "sugar_g": 10.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 244g",
+    "food_type": "Fats",
+    "units": {
+      "cup": 244.0
+    }
+  },
+  "Cream Sour": {
+    "base_grams": 100.0,
+    "calories": 214.0,
+    "fat_g": 20.96,
+    "protein_g": 3.16,
+    "carbs_g": 4.27,
+    "fiber_g": 0.0,
+    "sugar_g": 0.16,
+    "meal_type": "Baking",
+    "default_g_volume": "61.3g in 1/4 cup",
+    "food_type": "Fats",
+    "units": {
+      "cup": 245.2
+    }
+  },
+  "Dates dried": {
+    "base_grams": 40.0,
+    "calories": 111.0,
+    "fat_g": 0.06,
+    "protein_g": 0.72,
+    "carbs_g": 29.99,
+    "fiber_g": 2.7,
+    "sugar_g": 26.59,
+    "meal_type": "Baking",
+    "default_g_volume": "2 pieces is 40g",
+    "food_type": "Fruits, dried",
+    "units": {
+      "piece": 20.0
+    }
+  },
+  "Dutche Baking Bar Matcha": {
+    "base_grams": 25.0,
+    "calories": 140.0,
+    "fat_g": 10.0,
+    "protein_g": 2.0,
+    "carbs_g": 13.0,
+    "fiber_g": 0.0,
+    "sugar_g": 13.0,
+    "meal_type": "Baking",
+    "default_g_volume": "25 g per square",
+    "food_type": "Flavoring",
+    "units": {
+      "piece": 25.0
+    }
+  },
+  "Dutche Baking Bar Ube": {
+    "base_grams": 25.0,
+    "calories": 140.0,
+    "fat_g": 10.0,
+    "protein_g": 2.0,
+    "carbs_g": 13.0,
+    "fiber_g": 0.0,
+    "sugar_g": 10.0,
+    "meal_type": "Baking",
+    "default_g_volume": "25 g per square",
+    "food_type": "Flavoring",
+    "units": {
+      "piece": 25.0
+    }
+  },
+  "Dutche Baking Bar Chocolate": {
+    "base_grams": 25.0,
+    "calories": 140.0,
+    "fat_g": 10.0,
+    "protein_g": 2.0,
+    "carbs_g": 13.0,
+    "fiber_g": 0.0,
+    "sugar_g": 10.0,
+    "meal_type": "Baking",
+    "default_g_volume": "25 g per square",
+    "food_type": "Flavoring",
+    "units": {
+      "piece": 25.0
+    }
+  },
+  "Egg albumen powder": {
+    "base_grams": 100.0,
+    "calories": 330.0,
+    "fat_g": 0.3,
+    "protein_g": 80.0,
+    "carbs_g": 3.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 7g",
+    "food_type": "Protein",
+    "units": {
+      "tbsp": 7.0
+    }
+  },
+  "Egg plain": {
+    "base_grams": 50.0,
+    "calories": 74.0,
+    "fat_g": 4.97,
+    "protein_g": 6.27,
+    "carbs_g": 0.4,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 large is 50g",
+    "food_type": "Fats",
+    "units": {
+      "piece": 50.0
+    }
+  },
+  "Erythritol granules": {
+    "base_grams": 100.0,
+    "calories": 4.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 50.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "51g per 1/4cup",
+    "food_type": "Sweetener",
+    "units": {
+      "cup": 204.0
+    }
+  },
+  "Ferna gelatin powder": {
+    "base_grams": 10.0,
+    "calories": 40.0,
+    "fat_g": 0.0,
+    "protein_g": 10.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "9.4g powder per tbsp",
+    "food_type": "Protein",
+    "units": {
+      "tbsp": 9.4
+    }
+  },
+  "Fiber Oat": {
+    "base_grams": 12.0,
+    "calories": 0.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 9.0,
+    "fiber_g": 9.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "9g per tbsp powder",
+    "food_type": "Fiber",
+    "units": {
+      "tbsp": 9.0
+    }
+  },
+  "Fiber Psyllium": {
+    "base_grams": 5.38,
+    "calories": 18.93,
+    "fat_g": 0.235375,
+    "protein_g": 0.840625,
+    "carbs_g": 3.3625,
+    "fiber_g": 2.2865,
+    "sugar_g": 0.033625,
+    "meal_type": "Baking",
+    "default_g_volume": "16g per tbsp powder",
+    "food_type": "Fiber",
+    "units": {
+      "tbsp": 16.0
+    }
+  },
+  "Figs dried": {
+    "base_grams": 8.4,
+    "calories": 21.0,
+    "fat_g": 0.1,
+    "protein_g": 0.3,
+    "carbs_g": 5.4,
+    "fiber_g": 0.8,
+    "sugar_g": 4.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 piece",
+    "food_type": "Fruits, dried",
+    "units": {
+      "piece": 8.4
+    }
+  },
+  "Flour Almond": {
+    "base_grams": 24.0,
+    "calories": 140.0,
+    "fat_g": 12.2,
+    "protein_g": 5.2,
+    "carbs_g": 4.8,
+    "fiber_g": 2.6,
+    "sugar_g": 1.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1/4 cup is 24 g",
+    "food_type": "Flour",
+    "units": {
+      "cup": 96.0
+    }
+  },
+  "Flour Coconut": {
+    "base_grams": 28.0,
+    "calories": 120.0,
+    "fat_g": 3.0,
+    "protein_g": 6.0,
+    "carbs_g": 18.0,
+    "fiber_g": 10.0,
+    "sugar_g": 6.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1/4 cup is 28 g",
+    "food_type": "Flour",
+    "units": {
+      "cup": 112.0
+    }
+  },
+  "Flour Oat BRAN": {
+    "base_grams": 100.0,
+    "calories": 246.0,
+    "fat_g": 7.03,
+    "protein_g": 17.3,
+    "carbs_g": 66.22,
+    "fiber_g": 15.4,
+    "sugar_g": 1.45,
+    "meal_type": "Baking",
+    "default_g_volume": "120g per 1 cup",
+    "food_type": "Flour",
+    "units": {
+      "cup": 120.0
+    }
+  },
+  "Flour Oat WHOLE": {
+    "base_grams": 100.0,
+    "calories": 404.0,
+    "fat_g": 9.12,
+    "protein_g": 14.66,
+    "carbs_g": 65.7,
+    "fiber_g": 6.5,
+    "sugar_g": 0.8,
+    "meal_type": "Baking",
+    "default_g_volume": "120g per 1 cup",
+    "food_type": "Flour",
+    "units": {
+      "cup": 120.0
+    }
+  },
+  "Garbanzos Chickpeas": {
+    "base_grams": 100.0,
+    "calories": 365.0,
+    "fat_g": 6.0,
+    "protein_g": 19.0,
+    "carbs_g": 61.0,
+    "fiber_g": 17.0,
+    "sugar_g": 11.0,
+    "meal_type": "Baking",
+    "default_g_volume": "100g per 1/2 cup",
+    "food_type": "Protein",
+    "units": {
+      "cup": 200.0
+    }
+  },
+  "Ghirardelli Semi-sweet Chocolate Chips": {
+    "base_grams": 15.0,
+    "calories": 70.0,
+    "fat_g": 4.5,
+    "protein_g": 1.0,
+    "carbs_g": 10.0,
+    "fiber_g": 1.0,
+    "sugar_g": 8.0,
+    "meal_type": "Baking",
+    "default_g_volume": "34 chips per 15g Tbsp",
+    "food_type": "Topping",
+    "units": {
+      "tbsp": 15.0,
+      "piece": 0.4412
+    }
+  },
+  "Hershey's Semi Sweet Chocolate Chips": {
+    "base_grams": 15.0,
+    "calories": 70.0,
+    "fat_g": 4.0,
+    "protein_g": 1.0,
+    "carbs_g": 10.0,
+    "fiber_g": 1.0,
+    "sugar_g": 9.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 15g",
+    "food_type": "Topping",
+    "units": {
+      "tbsp": 15.0
+    }
+  },
+  "Hershey's Spec Dark Choc Chips": {
+    "base_grams": 15.0,
+    "calories": 70.0,
+    "fat_g": 4.5,
+    "protein_g": 1.0,
+    "carbs_g": 9.0,
+    "fiber_g": 1.0,
+    "sugar_g": 8.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 15g",
+    "food_type": "Topping",
+    "units": {
+      "tbsp": 15.0
+    }
+  },
+  "Kalamansi Juice pure": {
+    "base_grams": 4.0,
+    "calories": 10.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 4.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "2g per tbsp",
+    "food_type": "Flavoring",
+    "units": {
+      "tbsp": 2.0
+    }
+  },
+  "Lily's Dark No Sugar Added Chocolate chips": {
+    "base_grams": 14.0,
+    "calories": 50.0,
+    "fat_g": 4.0,
+    "protein_g": 1.0,
+    "carbs_g": 8.0,
+    "fiber_g": 5.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "24 chips per 14g Tbsp",
+    "food_type": "Topping",
+    "units": {
+      "tbsp": 14.0,
+      "piece": 0.5833
+    }
+  },
+  "Lindt 70% Dark Chocolate Bar": {
+    "base_grams": 10.0,
+    "calories": 63.33,
+    "fat_g": 4.67,
+    "protein_g": 0.67,
+    "carbs_g": 4.33,
+    "fiber_g": 0.67,
+    "sugar_g": 3.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 square is 10g",
+    "food_type": "Chocolate",
+    "units": {
+      "piece": 10.0
+    }
+  },
+  "Lindt 85% Dark Chocolate Bar": {
+    "base_grams": 10.0,
+    "calories": 56.67,
+    "fat_g": 67.0,
+    "protein_g": 1.33,
+    "carbs_g": 3.67,
+    "fiber_g": 1.33,
+    "sugar_g": 1.33,
+    "meal_type": "Baking",
+    "default_g_volume": "1 square is 10g",
+    "food_type": "Chocolate",
+    "units": {
+      "piece": 10.0
+    }
+  },
+  "Lindt 90% Dark Chocolate Bar": {
+    "base_grams": 10.0,
+    "calories": 66.67,
+    "fat_g": 5.33,
+    "protein_g": 1.33,
+    "carbs_g": 3.0,
+    "fiber_g": 1.67,
+    "sugar_g": 0.67,
+    "meal_type": "Baking",
+    "default_g_volume": "1 square is 10g",
+    "food_type": "Chocolate",
+    "units": {
+      "piece": 10.0
+    }
+  },
+  "Macadamia nuts raw": {
+    "base_grams": 8.4,
+    "calories": 60.0,
+    "fat_g": 6.3,
+    "protein_g": 0.7,
+    "carbs_g": 1.2,
+    "fiber_g": 0.7,
+    "sugar_g": 0.4,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 8g",
+    "food_type": "Nuts",
+    "units": {
+      "tbsp": 8.0
+    }
+  },
+  "Mayonnaise Best Foods Real": {
+    "base_grams": 13.0,
+    "calories": 90.0,
+    "fat_g": 10.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 13g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 13.0
+    }
+  },
+  "Mayonnaise Kewpie": {
+    "base_grams": 20.0,
+    "calories": 140.0,
+    "fat_g": 15.2,
+    "protein_g": 0.3,
+    "carbs_g": 0.9,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 14.4g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 14.4
+    }
+  },
+  "Mayonnaise Lady's Choice Real": {
+    "base_grams": 15.0,
+    "calories": 105.0,
+    "fat_g": 11.0,
+    "protein_g": 0.0,
+    "carbs_g": 1.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.5,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 15g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 15.0
+    }
+  },
+  "Milk Almond Unsweetened": {
+    "base_grams": 103.0,
+    "calories": 17.0,
+    "fat_g": 1.4,
+    "protein_g": 0.56,
+    "carbs_g": 0.32,
+    "fiber_g": 0.2,
+    "sugar_g": 0.12,
+    "meal_type": "Baking",
+    "default_g_volume": "103 g per 100 ml",
+    "food_type": "Milk",
+    "units": {
+      "cup": 257.0
+    }
+  },
+  "Milk Coconut": {
+    "base_grams": 100.0,
+    "calories": 220.0,
+    "fat_g": 22.0,
+    "protein_g": 2.0,
+    "carbs_g": 4.0,
+    "fiber_g": 0.3,
+    "sugar_g": 2.4,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 100g",
+    "food_type": "Milk",
+    "units": {
+      "cup": 100.0
+    }
+  },
+  "Milk Lowfat": {
+    "base_grams": 100.0,
+    "calories": 42.0,
+    "fat_g": 0.97,
+    "protein_g": 3.37,
+    "carbs_g": 5.2,
+    "fiber_g": 0.0,
+    "sugar_g": 5.2,
+    "meal_type": "Baking",
+    "default_g_volume": "100g in 100 ml",
+    "food_type": "Milk",
+    "units": {}
+  },
+  "Milk Powder Bear Brand": {
+    "base_grams": 7.0,
+    "calories": 32.0,
+    "fat_g": 1.4,
+    "protein_g": 1.0,
+    "carbs_g": 4.0,
+    "fiber_g": 0.0,
+    "sugar_g": 3.0,
+    "meal_type": "Baking",
+    "default_g_volume": "7g per tbsp",
+    "food_type": "Milk",
+    "units": {
+      "tbsp": 7.0
+    }
+  },
+  "Milk Powder Lowfat": {
+    "base_grams": 5.0,
+    "calories": 30.0,
+    "fat_g": 0.0,
+    "protein_g": 3.0,
+    "carbs_g": 4.7,
+    "fiber_g": 0.0,
+    "sugar_g": 4.3,
+    "meal_type": "Baking",
+    "default_g_volume": "5g per tbsp",
+    "food_type": "Milk",
+    "units": {
+      "tbsp": 5.0
+    }
+  },
+  "Monkfruit Erythritol granules": {
+    "base_grams": 8.0,
+    "calories": 1.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 8g",
+    "food_type": "Sweetener",
+    "units": {
+      "tbsp": 8.0
+    }
+  },
+  "Monkfruit Erythritol": {
+    "base_grams": 100.0,
+    "calories": 0.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 100.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "12.5 g per tbsp",
+    "food_type": "Sweetener",
+    "units": {
+      "tbsp": 12.5,
+      "tsp": 4.0,
+      "cup": 200.0
+    }
+  },
+  "Oat bran whole": {
+    "base_grams": 54.75,
+    "calories": 22.0,
+    "fat_g": 0.475,
+    "protein_g": 1.75,
+    "carbs_g": 6.25,
+    "fiber_g": 1.425,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1/4 cup is 54.75g",
+    "food_type": "Fiber",
+    "units": {
+      "cup": 219.0
+    }
+  },
+  "Olive oil": {
+    "base_grams": 28.0,
+    "calories": 238.0,
+    "fat_g": 28.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "2 Tbsp is 28g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 14.0
+    }
+  },
+  "Pancake mix, Magnolia": {
+    "base_grams": 180.0,
+    "calories": 675.0,
+    "fat_g": 9.0,
+    "protein_g": 13.5,
+    "carbs_g": 139.5,
+    "fiber_g": 4.5,
+    "sugar_g": 49.5,
+    "meal_type": "Baking",
+    "default_g_volume": "180g in 1 pack 3/4 cup",
+    "food_type": "Mix",
+    "units": {
+      "piece": 180.0
+    }
+  },
+  "Peanut butter Lene": {
+    "base_grams": 12.0,
+    "calories": 90.0,
+    "fat_g": 5.5,
+    "protein_g": 6.0,
+    "carbs_g": 4.0,
+    "fiber_g": 1.0,
+    "sugar_g": 1.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 12g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 12.0
+    }
+  },
+  "Peanut butter Skippy": {
+    "base_grams": 32.0,
+    "calories": 190.0,
+    "fat_g": 16.0,
+    "protein_g": 7.0,
+    "carbs_g": 6.0,
+    "fiber_g": 2.0,
+    "sugar_g": 3.0,
+    "meal_type": "Baking",
+    "default_g_volume": "2 Tbsp is 32g",
+    "food_type": "Fats",
+    "units": {
+      "tbsp": 16.0
+    }
+  },
+  "Pecans raw": {
+    "base_grams": 30.0,
+    "calories": 207.0,
+    "fat_g": 21.59,
+    "protein_g": 2.75,
+    "carbs_g": 4.16,
+    "fiber_g": 2.9,
+    "sugar_g": 1.19,
+    "meal_type": "Baking",
+    "default_g_volume": "1.5 g  per piece",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 1.5
+    }
+  },
+  "Protein powder pea": {
+    "base_grams": 20.0,
+    "calories": 80.0,
+    "fat_g": 1.5,
+    "protein_g": 15.0,
+    "carbs_g": 1.0,
+    "fiber_g": 1.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "10g per scoop",
+    "food_type": "Protein",
+    "units": {
+      "piece": 10.0
+    }
+  },
+  "Pumpkin Squash seeds": {
+    "base_grams": 10.0,
+    "calories": 54.0,
+    "fat_g": 4.58,
+    "protein_g": 2.45,
+    "carbs_g": 1.75,
+    "fiber_g": 0.4,
+    "sugar_g": 0.1,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 7.44g",
+    "food_type": "Seeds",
+    "units": {
+      "tbsp": 7.44
+    }
+  },
+  "Raisins golden": {
+    "base_grams": 9.7,
+    "calories": 29.0,
+    "fat_g": 0.0485,
+    "protein_g": 0.3,
+    "carbs_g": 7.7,
+    "fiber_g": 0.4,
+    "sugar_g": 5.7,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 9.7g",
+    "food_type": "Fruits, dried",
+    "units": {
+      "tbsp": 9.7
+    }
+  },
+  "Raisins sultanas": {
+    "base_grams": 10.0,
+    "calories": 30.0,
+    "fat_g": 0.05,
+    "protein_g": 0.34,
+    "carbs_g": 7.95,
+    "fiber_g": 0.4,
+    "sugar_g": 5.92,
+    "meal_type": "Baking",
+    "default_g_volume": "1 Tbsp is 10g",
+    "food_type": "Fruits, dried",
+    "units": {
+      "tbsp": 10.0
+    }
+  },
+  "Reese's peanut butter chips": {
+    "base_grams": 15.0,
+    "calories": 80.0,
+    "fat_g": 4.5,
+    "protein_g": 3.0,
+    "carbs_g": 8.0,
+    "fiber_g": 0.5,
+    "sugar_g": 6.0,
+    "meal_type": "Baking",
+    "default_g_volume": "45 pcs is 15g Tbsp",
+    "food_type": "Topping",
+    "units": {
+      "piece": 0.3333
+    }
+  },
+  "Salt pinch": {
+    "base_grams": 0.5,
+    "calories": 0.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "0.575g in 1/4 tsp",
+    "food_type": "Flavoring",
+    "units": {
+      "tsp": 2.3
+    }
+  },
+  "Sesame seeds": {
+    "base_grams": 10.0,
+    "calories": 57.0,
+    "fat_g": 4.8,
+    "protein_g": 1.7,
+    "carbs_g": 2.6,
+    "fiber_g": 1.7,
+    "sugar_g": 0.05,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 9g",
+    "food_type": "Seeds",
+    "units": {
+      "tbsp": 9.0
+    }
+  },
+  "Stevia drops": {
+    "base_grams": 1.0,
+    "calories": 2.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 1.0,
+    "fiber_g": 0.5,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1g is 2 squirts",
+    "food_type": "Sweetener",
+    "units": {
+      "piece": 0.5
+    }
+  },
+  "Stevia Erythritol": {
+    "base_grams": 100.0,
+    "calories": 0.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 100.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "12.5 g per tbsp",
+    "food_type": "Sweetener",
+    "units": {
+      "tbsp": 12.5,
+      "tsp": 4.0,
+      "cup": 200.0
+    }
+  },
+  "Sunflower seeds roasted hulled": {
+    "base_grams": 10.0,
+    "calories": 57.0,
+    "fat_g": 4.96,
+    "protein_g": 2.28,
+    "carbs_g": 1.88,
+    "fiber_g": 1.0,
+    "sugar_g": 0.26,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tbsp is 10g",
+    "food_type": "Seeds",
+    "units": {
+      "tbsp": 10.0
+    }
+  },
+  "Unsweetened Chocolate Baking Bar": {
+    "base_grams": 25.0,
+    "calories": 140.0,
+    "fat_g": 10.0,
+    "protein_g": 1.0,
+    "carbs_g": 14.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "500g per pack",
+    "food_type": "Flavoring",
+    "units": {
+      "piece": 500.0
+    }
+  },
+  "Ube Powder Madison brand": {
+    "base_grams": 100.0,
+    "calories": 90.0,
+    "fat_g": 0.0,
+    "protein_g": 1.0,
+    "carbs_g": 21.0,
+    "fiber_g": 3.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "100g per pack",
+    "food_type": "",
+    "units": {
+      "piece": 100.0
+    }
+  },
+  "Vanilla extract": {
+    "base_grams": 4.2,
+    "calories": 2.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.5,
+    "fiber_g": 0.0,
+    "sugar_g": 0.5,
+    "meal_type": "Baking",
+    "default_g_volume": "1 tsp is 4.2g",
+    "food_type": "Flavoring",
+    "units": {
+      "tsp": 4.2
+    }
+  },
+  "Walnuts raw": {
+    "base_grams": 10.0,
+    "calories": 65.0,
+    "fat_g": 6.5,
+    "protein_g": 1.5,
+    "carbs_g": 1.4,
+    "fiber_g": 0.7,
+    "sugar_g": 0.3,
+    "meal_type": "Baking",
+    "default_g_volume": "14 halves in 30g",
+    "food_type": "Nuts",
+    "units": {
+      "piece": 2.1429
+    }
+  },
+  "Xanthan gum": {
+    "base_grams": 0.8,
+    "calories": 5.0,
+    "fat_g": 0.0,
+    "protein_g": 0.0,
+    "carbs_g": 0.8,
+    "fiber_g": 0.8,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1/2 tsp is 0.8g",
+    "food_type": "Fiber",
+    "units": {
+      "tsp": 1.6
+    }
+  },
+  "Yogurt BTIC NF Greek": {
+    "base_grams": 100.0,
+    "calories": 75.0,
+    "fat_g": 0.4,
+    "protein_g": 6.5,
+    "carbs_g": 11.4,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 245g",
+    "food_type": "Yogurt",
+    "units": {
+      "cup": 245.0
+    }
+  },
+  "Yogurt DVF Greek": {
+    "base_grams": 156.0,
+    "calories": 80.0,
+    "fat_g": 3.5,
+    "protein_g": 4.0,
+    "carbs_g": 8.0,
+    "fiber_g": 0.0,
+    "sugar_g": 0.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 280g",
+    "food_type": "Yogurt",
+    "units": {
+      "cup": 280.0
+    }
+  },
+  "Yogurt Emborg": {
+    "base_grams": 104.0,
+    "calories": 75.0,
+    "fat_g": 3.5,
+    "protein_g": 3.7,
+    "carbs_g": 7.1,
+    "fiber_g": 0.0,
+    "sugar_g": 5.1,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 245g",
+    "food_type": "Yogurt",
+    "units": {
+      "cup": 245.0
+    }
+  },
+  "Yogurt Nestle Plain": {
+    "base_grams": 125.0,
+    "calories": 73.0,
+    "fat_g": 3.0,
+    "protein_g": 3.4,
+    "carbs_g": 8.0,
+    "fiber_g": 0.0,
+    "sugar_g": 4.0,
+    "meal_type": "Baking",
+    "default_g_volume": "1 cup is 245g",
+    "food_type": "Yogurt",
+    "units": {
+      "cup": 245.0
+    }
+  }
+}

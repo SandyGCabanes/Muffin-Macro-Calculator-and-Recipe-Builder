@@ -1,0 +1,92 @@
+Food,Meal Type,Grams total,Calories,Fat g,Protein g,Carbs g,Fiber g,Sugar g,Grams per tbsp,Grams per tsp,Grams per cup,Grams per piece,Default g/volume,Food type
+Allulose,Baking,100,40,0,0,100,0,100,12.5,4,200,, 12.5 g per tbsp , Sweetener 
+Almond slices,Baking,5.75,33.3,2.88,1.19,1.25,0.75,0.25,4.38,,,,4.38 g in 1 tbsp,Nuts
+Almonds whole roasted,Baking,30,182.1,16.551,6.369,5.304,3.15,1.2,,,,1.3043,30 g in 23 pcs,Nuts
+Apple Fuji,Baking,150,77,0.26,0.39,20.71,3.6,15.59,,,98,,98g per cup,"Fruits, FRESH"
+Apple Washington Red Del,Baking,150,79,0.25,0.39,20.72,3.6,15.58,,,98,,98g per cup,"Fruits, FRESH"
+Apricots dried,Dessert,25,60,0.13,0.85,15.66,1.8,13.36,,,,6.7,6.7g per piece,"Fruits, dried"
+Avocado,Dessert,201,322,29,0,17,13,0,,,,201,201g in 1 piece,"Fruits, FRESH"
+Baking powder,Baking,4.6,2.4,0,0,1.1,0,0,,4.6,,,4.6g per tsp,Leavening
+Banana Saba,Dessert,100,120,0.3,1.3,31,2.6,9,14,5,238,150,150g per piece,"Fruits, Fresh"
+Banana Lakatan,Dessert,100,90,0.3,1,23,2.6,12,14,5,236,100,100g per piece,"Fruits, Fresh"
+Banana Cavendish,Dessert,100,89,0.3,1.1,22.8,2.6,12.2,14,5,236,118,118g per piece,"Fruits, Fresh"
+Blueberries dried,Dessert,40,160,1,1,32,3,27,,,160,,40g in 1/4 cup,"Fruits, dried"
+Blueberries fresh,Baking,80,45.6,0.24,0.56,11.6,1.92,8,,,190.4762,,0.42cup is 80g,"Fruits, dried"
+Brazil nuts raw,Baking,30,197,19.93,4.3,3.68,2.2,0.7,,,,3,10 pcs per 30g,Nuts
+Butter,Baking,14.2,102,11.5,0.1,0,0,0,14.2,,,,1 Tbsp is 14.2g,Fats
+Cacao nibs,Baking,9,58,4.7,1.3,2.6,1.5,0.1,11.34,,,,1 tbsp is 11.34g,Topping
+Cashews raw,Baking,30,166,13.16,5.47,9.06,1,1.77,,,,2,15 halves in 30g,Nuts
+Cashews roasted,Baking,30,180,13.7,5.6,8.7,2,3,,,,2,15 halves in 30g,Nuts
+Cheese cheddar shredded,Baking,100,403,33.14,24.9,1.28,0,0.52,14.7,,,,29.4 g in 2 tbsp,Cheese
+Cheese cream cheese,Baking,100,249,34.87,7.55,2.66,0,0.2,15,,,,1 tbsp is 15g,Cheese
+Cheese mozzarella shredded,Baking,100,300,22,22,2.2,0,1,14.05,,,,28.1 g in 2 tbsp,Cheese
+Cheese parmesan Kraft,Baking,5,20,1.5,2,0,0,0,,2.5,,,2 tsp is 5g,Cheese
+Cherries dried,Baking,15,50,0.1,0.2,12,0.4,10,,,,2.5,6 pieces is 15g,"Fruits, dried"
+Chia seeds,Baking,12,58,3.7,2,5.1,4.1,0,15,,,,15g in 1 tbsp,Seeds
+Cinnamon dash,Baking,1,1,0,0,0,0,0,,2.76,,,0.69g in 1/4 tsp,Flavoring
+Cocoa powder Goya,Baking,8,33,1,2,4,3,0,4,,,,8 g/ 2 Tbsp,Flavoring
+Cocoa powder Hershey's,Baking,5,10,0.5,1,3,2,0,5,,,,5 g/ 1 Tbsp,Flavoring
+Cranberries dried sweetened,Baking,10,31,0.14,0.01,8.24,0.6,6.5,10,,,,10g in 1 tbsp,"Fruits, dried"
+Cream Coconut,Baking,100,220,22,2,4,0.3,2.4,,,100,,1 cup is 100g,Fats
+Cream Nestle All Purpose,Baking,244,675,67.5,6.25,10,0,10,,,244,,1 cup is 244g,Fats
+Cream Sour,Baking,100,214,20.96,3.16,4.27,0,0.16,,,245.2,,61.3g in 1/4 cup,Fats
+Dates dried,Baking,40,111,0.06,0.72,29.99,2.7,26.59,,,,20,2 pieces is 40g,"Fruits, dried"
+Dutche Baking Bar Matcha,Baking,25,140,10,2,13,0,13,,,,25,25 g per square,Flavoring
+Dutche Baking Bar Ube,Baking,25,140,10,2,13,0,10,,,,25,25 g per square,Flavoring
+Dutche Baking Bar Chocolate,Baking,25,140,10,2,13,0,10,,,,25,25 g per square,Flavoring
+Egg albumen powder,Baking,100,330,0.3,80,3,0,0,7,,,,1 tbsp is 7g,Protein
+Egg plain,Baking,50,74,4.97,6.27,0.4,0,0,,,,50,1 large is 50g,Fats
+Erythritol granules,Baking,100,4,0,0,50,0,0,,,204,,51g per 1/4cup,Sweetener
+Ferna gelatin powder,Baking,10,40,0,10,0,0,0,9.4,,,,9.4g powder per tbsp,Protein
+Fiber Oat,Baking,12,0,0,0,9,9,0,9,,,,9g per tbsp powder,Fiber
+Fiber Psyllium,Baking,5.38,18.93,0.235375,0.840625,3.3625,2.2865,0.033625,16,,,,16g per tbsp powder,Fiber
+Figs dried,Baking,8.4,21,0.1,0.3,5.4,0.8,4,,,,8.4,1 piece,"Fruits, dried"
+Flour Almond,Baking,24,140,12.2,5.2,4.8,2.6,1,,,96,,1/4 cup is 24 g,Flour
+Flour Coconut,Baking,28,120,3,6,18,10,6,,,112,,1/4 cup is 28 g,Flour
+Flour Oat BRAN,Baking,100,246,7.03,17.3,66.22,15.4,1.45,,,120,,120g per 1 cup,Flour
+Flour Oat WHOLE,Baking,100,404,9.12,14.66,65.7,6.5,0.8,,,120,,120g per 1 cup,Flour
+Garbanzos Chickpeas,Baking,100,365,6,19,61,17,11,,,200,,100g per 1/2 cup,Protein
+Ghirardelli Semi-sweet Chocolate Chips,Baking,15,70,4.5,1,10,1,8,15,,,0.4412,34 chips per 15g Tbsp,Topping
+Hershey's Semi Sweet Chocolate Chips,Baking,15,70,4,1,10,1,9,15,,,,1 Tbsp is 15g,Topping
+Hershey's Spec Dark Choc Chips,Baking,15,70,4.5,1,9,1,8,15,,,,1 Tbsp is 15g,Topping
+Kalamansi Juice pure,Baking,4,10,0,0,4,0,0,2,,,,2g per tbsp,Flavoring
+Lily's Dark No Sugar Added Chocolate chips,Baking,14,50,4,1,8,5,0,14,,,0.5833,24 chips per 14g Tbsp,Topping
+Lindt 70% Dark Chocolate Bar,Baking,10,63.33,4.67,0.67,4.33,0.67,3,,,,10,1 square is 10g,Chocolate
+Lindt 85% Dark Chocolate Bar,Baking,10,56.67,67,1.33,3.67,1.33,1.33,,,,10,1 square is 10g,Chocolate
+Lindt 90% Dark Chocolate Bar,Baking,10,66.67,5.33,1.33,3,1.67,0.67,,,,10,1 square is 10g,Chocolate
+Macadamia nuts raw,Baking,8.4,60,6.3,0.7,1.2,0.7,0.4,8,,,,1 Tbsp is 8g,Nuts
+Mayonnaise Best Foods Real,Baking,13,90,10,0,0,0,0,13,,,,1 Tbsp is 13g,Fats
+Mayonnaise Kewpie,Baking,20,140,15.2,0.3,0.9,0,0,14.4,,,,1 tbsp is 14.4g,Fats
+Mayonnaise Lady's Choice Real,Baking,15,105,11,0,1,0,0.5,15,,,,1 Tbsp is 15g,Fats
+Milk Almond Unsweetened,Baking,103,17,1.4,0.56,0.32,0.2,0.12,,,257,,103 g per 100 ml,Milk
+Milk Coconut,Baking,100,220,22,2,4,0.3,2.4,,,100,,1 cup is 100g,Milk
+Milk Lowfat,Baking,100,42,0.97,3.37,5.2,0,5.2,,,,,100g in 100 ml,Milk
+Milk Powder Bear Brand,Baking,7,32,1.4,1,4,0,3,7,,,,7g per tbsp,Milk
+Milk Powder Lowfat,Baking,5,30,0,3,4.7,0,4.3,5,,,,5g per tbsp,Milk
+Monkfruit Erythritol granules,Baking,8,1,0,0,0,0,0,8,,,,1 Tbsp is 8g,Sweetener
+Monkfruit Erythritol,Baking,100,0,0,0,100,0,0,12.5,4,200,,12.5 g per tbsp , Sweetener 
+Oat bran whole,Baking,54.75,22,0.475,1.75,6.25,1.425,0,,,219,,1/4 cup is 54.75g,Fiber
+Olive oil,Baking,28,238,28,0,0,0,0,14,,,,2 Tbsp is 28g,Fats
+"Pancake mix, Magnolia",Baking,180,675,9,13.5,139.5,4.5,49.5,,,,180,180g in 1 pack 3/4 cup,Mix
+Peanut butter Lene,Baking,12,90,5.5,6,4,1,1,12,,,,1 Tbsp is 12g,Fats
+Peanut butter Skippy,Baking,32,190,16,7,6,2,3,16,,,,2 Tbsp is 32g,Fats
+Pecans raw,Baking,30,207,21.59,2.75,4.16,2.9,1.19,,,,1.5,1.5 g  per piece,Nuts
+Protein powder pea,Baking,20,80,1.5,15,1,1,0,,,,10,10g per scoop,Protein
+Pumpkin Squash seeds,Baking,10,54,4.58,2.45,1.75,0.4,0.1,7.44,,,,1 tbsp is 7.44g,Seeds
+Raisins golden,Baking,9.7,29,0.0485,0.3,7.7,0.4,5.7,9.7,,,,1 Tbsp is 9.7g,"Fruits, dried"
+Raisins sultanas,Baking,10,30,0.05,0.34,7.95,0.4,5.92,10,,,,1 Tbsp is 10g,"Fruits, dried"
+Reese's peanut butter chips,Baking,15,80,4.5,3,8,0.5,6,,,,0.3333,45 pcs is 15g Tbsp,Topping
+Salt pinch,Baking,0.5,0,0,0,0,0,0,,2.3,,,0.575g in 1/4 tsp,Flavoring
+Sesame seeds,Baking,10,57,4.8,1.7,2.6,1.7,0.05,9,,,,1 tbsp is 9g,Seeds
+Stevia drops,Baking,1,2,0,0,1,0.5,0,,,,0.5,1g is 2 squirts,Sweetener
+Stevia Erythritol,Baking,100,0,0,0,100,0,0,12.5,4,200,,12.5 g per tbsp , Sweetener 
+Sunflower seeds roasted hulled,Baking,10,57,4.96,2.28,1.88,1,0.26,10,,,,1 tbsp is 10g,Seeds
+Unsweetened Chocolate Baking Bar,Baking,25,140,10,1,14,0,0,,,,500,500g per pack,Flavoring
+Ube Powder Madison brand,Baking,100,90,0,1,21,3,0,,,,100,100g per pack,
+Vanilla extract,Baking,4.2,2,0,0,0.5,0,0.5,,4.2,,,1 tsp is 4.2g,Flavoring
+Walnuts raw,Baking,10,65,6.5,1.5,1.4,0.7,0.3,,,,2.1429,14 halves in 30g,Nuts
+Xanthan gum,Baking,0.8,5,0,0,0.8,0.8,0,,1.6,,,1/2 tsp is 0.8g,Fiber
+Yogurt BTIC NF Greek,Baking,100,75,0.4,6.5,11.4,0,0,,,245,,1 cup is 245g,Yogurt
+Yogurt DVF Greek,Baking,156,80,3.5,4,8,0,0,,,280,,1 cup is 280g,Yogurt
+Yogurt Emborg,Baking,104,75,3.5,3.7,7.1,0,5.1,,,245,,1 cup is 245g,Yogurt
+Yogurt Nestle Plain,Baking,125,73,3,3.4,8,0,4,,,245,,1 cup is 245g,Yogurt
