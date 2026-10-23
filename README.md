@@ -3,9 +3,9 @@
 ## Overview of the Problem
 This project started as an Excel workbook that I built to be able to adjust the macros in the muffin recipe to achieve target protein grams, fat grams and carb grams. I am carb-sensitive, so I needed to watch my carb and sugar intake but at the same time still enjoy the muffins that I bake.  My workbook did its job well, but over time I ran into some practical limitations.
 
-The solution depended on Excel, required opening files from cloud storage, and involved navigating large worksheets using both horizontal and vertical scrolling. It worked, but it wasn't particularly convenient or portable.
+The initial solution depended on Excel, but required opening files from cloud storage, and involved navigating large worksheets using both horizontal and vertical scrolling. It worked, but it wasn't particularly convenient or portable.
 
-The goal was to **keep the functionality but remove the friction.**  I needed to shift from Excel to something more automated. It should be able to run locally, or on the github pages, process data on the fly, and export new recipes without firing up Excel.
+I needed to shift from Excel to something more automated. The goal was to **keep the functionality but remove the friction.**   It should be able to run locally, or on the github pages, process data on the fly, and export new recipes without firing up Excel.
 
 I rebuilt the solution in two different ways:
 
@@ -38,6 +38,7 @@ The first migration moved the workbook's functionality into a standalone desktop
 - Previous recipes can be uploaded, and new recipes can be saved as local files
 
 All these benefits were delivered.  My envisioned design was to keep the ingredients.csv file small, since I have a limited set of baking ingredients.  For example, eggs are eggs, no small/medium/large options. 
+[![tkinter_muffin_demo](thumbnail_tkinter.gif)](tkinter_muffin_demo.gif)
 
 ### Browser-Based Application
 After validating the desktop approach, I created a standalone HTML and JavaScript version. The initial versions had a separate python code to update the embedded ingredients in the html, transforming the csv to json that the html imports. The new version merged these into a single html file that pulls the csv file directly and converts it as an object within the html file, without requiring a json file.  
