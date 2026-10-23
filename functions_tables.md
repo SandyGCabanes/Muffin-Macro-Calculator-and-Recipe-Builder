@@ -42,4 +42,4 @@ Here is the guide to the functions in `muffin_recipe_builder_v5.py`. The functio
 | Loading a recipe | `_load_recipe_from_excel()` | Loads a recipe from the chosen Excel file and updates the recipe display and totals. |
 | Saving a recipe | `_save_recipe()` | Saves the recipe and its summary in an Excel file. |
 
-`CsvLoadError` is not a function. It is the name used when the ingredients file cannot be loaded.
+`CsvLoadError` is name used when the ingredients file cannot be loaded.  It is not included in the functions list.
