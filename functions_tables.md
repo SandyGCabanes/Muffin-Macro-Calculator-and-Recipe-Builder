@@ -1,6 +1,6 @@
 # Functions and what they do
 
-Here is a plain-English guide to the functions in `muffin_recipe_builder_v5.py`. The function names are kept as they appear in the code so they can be looked up there.
+Here is the guide to the functions in `muffin_recipe_builder_v5.py`. The function names are kept as they appear in the code so they can be looked up there.
 
 | Section | Function | What it does |
 |---|---|---|
