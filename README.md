@@ -37,7 +37,7 @@ The first migration moved the workbook's functionality into a [standalone deskto
 
 - Previous recipes can be uploaded, and new recipes can be saved as local files
 
-All these benefits were delivered.  My envisioned design was to keep the ingredients.csv file small, since I have a limited set of baking ingredients.  For example, eggs are eggs, no small/medium/large options. 
+All these benefits were delivered.  My [envisioned design](https://github.com/SandyGCabanes/Muffin-Macro-Calculator-and-Recipe-Builder/blob/main/big_picture_diagram.md) was to keep the ingredients.csv file small, since I have a limited set of baking ingredients.  For example, eggs are eggs, no small/medium/large options. 
 [![tkinter_muffin_demo](thumbnail_tkinter.gif)](tkinter_muffin_demo.gif)
 
 ### Browser-Based Application
@@ -96,7 +96,7 @@ This made it easier for anyone to:
 
 - Explain the system to new users
 
-The lineage diagrams are intended to **document the application's behavior** in a way that is **useful to everyone.**
+The [lineage diagrams](https://github.com/SandyGCabanes/Muffin-Macro-Calculator-and-Recipe-Builder/blob/main/lineage_diagram_index_v2.md) are intended to **document the application's behavior** in a way that is **useful to everyone.**
 
 ## Validation
 Each implementation was compared against the original Excel workbook to confirm that calculations and outputs remained consistent.   I have used the Excel workbook for more than a year, so I know what items to validate.
