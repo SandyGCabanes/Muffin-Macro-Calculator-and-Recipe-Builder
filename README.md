@@ -55,7 +55,7 @@ After validating the desktop approach, I created a standalone HTML and JavaScrip
 - Upload old recipes and tweak them, save new recipes locally
 
 All these benefits were delivered by the html app. The CSS section is deliberately embedded within the html and not a separate standalone import. This was a design choice.
-![html_muffin_demo](thumbnail.gif)
+[![html_muffin_demo](thumbnail.gif)](html_muffin_demo.gif)
 
 ## Development Process
 This project evolved through many rounds of iteration.
