@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muffin / Brownie / Cookie Macro Calculator</title>
+<style>
+  :root {
+    --accent: #3b8ed0;
+    --accent-hover: #3679ac;
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+  :root, :root[data-theme="light"] {
+    --bg: #f2f2f5;
+    --card: #ffffff;
+    --card-alt: #f5f5f7;
+    --border: rgba(0,0,0,0.10);
+    --text: #1b1b1f;
+    --text-muted: #6b6b74;
+    --row-hover: rgba(59,142,208,0.08);
+    --row-selected: rgba(59,142,208,0.16);
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a;
+    --card: #2c2c38;
+    --card-alt: #242429;
+    --border: rgba(255,255,255,0.14);
+    --text: #f0f0f2;
+    --text-muted: #9a9aa3;
+    --row-hover: rgba(59,142,208,0.14);
+    --row-selected: rgba(59,142,208,0.28);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+  }
+  header .subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  header .spacer { flex: 1; }
+  .switch-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .switch {
+    position: relative;
+    width: 38px;
+    height: 21px;
+    flex-shrink: 0;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .slider::before {
+    content: "";
+    position: absolute;
+    width: 15px; height: 15px;
+    left: 3px; top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.15s;
+  }
+  .switch input:checked + .slider { background: var(--accent); }
+  .switch input:checked + .slider::before { transform: translateX(17px); }
+
+  main {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+  }
+  :root[data-theme="dark"] .card {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  }
+  .card h2 {
+    font-size: 14px;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  label {
+    font-size: 12px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  input[type="text"], input[type="number"], select {
+    font: inherit;
+    font-size: 13px;
+    padding: 6px 9px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card-alt);
+    color: var(--text);
+  }
+  input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 0;
+  }
+
+  .top-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+  #search-input { width: 100%; max-width: 340px; }
+  .results {
+    max-width: 340px;
+    height: 130px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--card-alt);
+    margin-top: 6px;
+  }
+  .result-item {
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 2px 4px;
+  }
+  .result-item:hover, .result-item.cursor { background: var(--row-hover); }
+  .result-item.cursor { outline: 1px solid var(--accent); }
+  .selected-row {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .selected-row .value { font-weight: 700; color: var(--accent); }
+  .note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    max-width: 340px;
+  }
+  .entry-row {
+    display: flex;
+    gap: 12px;
+  }
+  .entry-box input, .entry-box select { width: 110px; }
+  #add-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  #add-btn:hover { background: var(--accent-hover); }
+
+  .table-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .table-head-row .hint { font-size: 11px; color: var(--text-muted); }
+  .table-wrap {
+    overflow: auto;
+    max-height: 340px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--card-alt);
+  }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  thead th {
+    position: sticky; top: 0;
+    background: var(--card-alt);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr:hover { background: var(--row-hover); cursor: pointer; }
+  tbody tr.row-selected { background: var(--row-selected); }
+  .empty-row td {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 24px;
+    cursor: default;
+  }
+  .empty-row:hover { background: transparent; }
+
+  .controls-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .controls-row .grow { flex: 1; }
+  button.btn {
+    font: inherit;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  button.btn-outline:hover { background: var(--row-hover); }
+  button.btn-accent {
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-weight: 700;
+  }
+  button.btn-accent:hover { background: var(--accent-hover); }
+  #servings-input { width: 55px; text-align: center; }
+
+  .totals-grid {
+    display: grid;
+    grid-template-columns: 110px repeat(6, 1fr);
+    gap: 4px 10px;
+    align-items: center;
+  }
+  .totals-grid .col-head {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+  .totals-grid .row-label { font-size: 13px; }
+  .totals-grid .val { text-align: right; font-size: 13px; }
+
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 4px 16px 20px;
+  }
+
+  @media (max-width: 720px) {
+    .top-grid { grid-template-columns: 1fr; }
+    .results, #search-input, .note { max-width: none; }
+    .totals-grid { grid-template-columns: 90px repeat(6, minmax(60px,1fr)); font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Macro Calculator</h1>
+  <span class="subtitle">muffins &middot; brownies &middot; cookies &middot; granola clusters</span>
+  <span class="spacer"></span>
+  <div class="switch-row">
+    <span>Dark mode</span>
+    <label class="switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+</header>
+
+<main>
+
+  <section class="card top-grid">
+    <div>
+      <label for="search-input">Search ingredient</label>
+      <input type="text" id="search-input" placeholder="Start typing&hellip;" autocomplete="off">
+      <div class="results" id="results"></div>
+      <div class="selected-row">
+        <span>Selected:</span>
+        <span class="value" id="selected-name">(none selected)</span>
+      </div>
+      <div class="note" id="default-note"></div>
+    </div>
+    <div>
+      <div class="entry-row">
+        <div class="entry-box">
+          <label for="amount-input">Amount</label>
+          <input type="number" id="amount-input" value="0" step="any" min="0">
+        </div>
+        <div class="entry-box">
+          <label for="unit-select">Unit</label>
+          <select id="unit-select"></select>
+        </div>
+      </div>
+      <button id="add-btn">+ Add to Recipe</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="table-head-row">
+      <h2>Recipe</h2>
+      <span class="hint">Click a row to select, then Remove Selected (or press Delete)</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr id="table-head-row"></tr>
+        </thead>
+        <tbody id="recipe-body">
+          <tr class="empty-row"><td colspan="9">No ingredients yet &mdash; search and add one above.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card controls-row">
+    <button class="btn btn-outline" id="remove-btn">Remove Selected</button>
+    <label for="servings-input" style="margin:0;">Servings:</label>
+    <input type="number" id="servings-input" value="8" min="1" step="1">
+    <span class="grow"></span>
+    <button class="btn btn-outline" id="load-btn">Load Recipe&hellip;</button>
+    <button class="btn btn-outline" id="csv-btn">Export CSV</button>
+    <button class="btn btn-accent" id="save-btn">Save Recipe</button>
+    <input type="file" id="file-input" accept=".xlsx,.xls" style="display:none;">
+  </section>
+
+  <section class="card controls-row">
+    <span style="font-size:13px;"><strong>Ingredient data:</strong> <span id="ingredients-status"></span></span>
+    <span class="grow"></span>
+    <button class="btn btn-outline" id="reset-ingredients-btn">Reset to Built-in</button>
+    <button class="btn btn-outline" id="update-ingredients-btn">Update Ingredients (.csv or .json)&hellip;</button>
+    <input type="file" id="ingredients-file-input" accept=".json,.csv,application/json,text/csv" style="display:none;">
+  </section>
+
+  <section class="card">
+    <h2>Totals &amp; Per Serving</h2>
+    <div class="totals-grid" id="totals-grid"></div>
+  </section>
+
+</main>
+
+<footer>Recipe data stays in your browser &mdash; use Save Recipe to download it as an Excel file, or Export CSV for a plain text version. Ingredient updates via the button above are remembered permanently in this browser (even after closing it), but won't carry over to a different browser or device.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+const MACRO_FIELDS = [
+  ["calories", "Calories"],
+  ["fat_g", "Fat (g)"],
+  ["protein_g", "Protein (g)"],
+  ["carbs_g", "Carbs (g)"],
+  ["fiber_g", "Fiber (g)"],
+  ["sugar_g", "Sugar (g)"],
+];
+const UNIT_ORDER = ["g", "tbsp", "tsp", "cup", "piece"];
+
+const RAW_INGREDIENTS = {"Allulose":{"base_grams":100.0,"calories":40.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":100.0,"fiber_g":0.0,"sugar_g":100.0,"meal_type":"Baking","default_g_volume":"12.5 g per tbsp","food_type":"Sweetener","units":{"tbsp":12.5,"tsp":4.0,"cup":200.0}},"Almond slices":{"base_grams":5.75,"calories":33.3,"fat_g":2.88,"protein_g":1.19,"carbs_g":1.25,"fiber_g":0.75,"sugar_g":0.25,"meal_type":"Baking","default_g_volume":"4.38 g in 1 tbsp","food_type":"Nuts","units":{"tbsp":4.38}},"Almonds whole roasted":{"base_grams":30.0,"calories":182.1,"fat_g":16.551,"protein_g":6.369,"carbs_g":5.304,"fiber_g":3.15,"sugar_g":1.2,"meal_type":"Baking","default_g_volume":"30 g in 23 pcs","food_type":"Nuts","units":{"piece":1.3043}},"Apple Fuji":{"base_grams":150.0,"calories":77.0,"fat_g":0.26,"protein_g":0.39,"carbs_g":20.71,"fiber_g":3.6,"sugar_g":15.59,"meal_type":"Baking","default_g_volume":"98g per cup","food_type":"Fruits, FRESH","units":{"cup":98.0}},"Apple Washington Red Del":{"base_grams":150.0,"calories":79.0,"fat_g":0.25,"protein_g":0.39,"carbs_g":20.72,"fiber_g":3.6,"sugar_g":15.58,"meal_type":"Baking","default_g_volume":"98g per cup","food_type":"Fruits, FRESH","units":{"cup":98.0}},"Apricots dried":{"base_grams":25.0,"calories":60.0,"fat_g":0.13,"protein_g":0.85,"carbs_g":15.66,"fiber_g":1.8,"sugar_g":13.36,"meal_type":"Dessert","default_g_volume":"6.7g per piece","food_type":"Fruits, dried","units":{"piece":6.7}},"Avocado":{"base_grams":201.0,"calories":322.0,"fat_g":29.0,"protein_g":0.0,"carbs_g":17.0,"fiber_g":13.0,"sugar_g":0.0,"meal_type":"Dessert","default_g_volume":"201g in 1 piece","food_type":"Fruits, FRESH","units":{"piece":201.0}},"Baking powder":{"base_grams":4.6,"calories":2.4,"fat_g":0.0,"protein_g":0.0,"carbs_g":1.1,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"4.6g per tsp","food_type":"Leavening","units":{"tsp":4.6}},"Banana Saba":{"base_grams":100.0,"calories":120.0,"fat_g":0.3,"protein_g":1.3,"carbs_g":31.0,"fiber_g":2.6,"sugar_g":9.0,"meal_type":"Dessert","default_g_volume":"150g per piece","food_type":"Fruits, Fresh","units":{"tbsp":14.0,"tsp":5.0,"cup":238.0,"piece":150.0}},"Banana Lakatan":{"base_grams":100.0,"calories":90.0,"fat_g":0.3,"protein_g":1.0,"carbs_g":23.0,"fiber_g":2.6,"sugar_g":12.0,"meal_type":"Dessert","default_g_volume":"100g per piece","food_type":"Fruits, Fresh","units":{"tbsp":14.0,"tsp":5.0,"cup":236.0,"piece":100.0}},"Banana Cavendish":{"base_grams":100.0,"calories":89.0,"fat_g":0.3,"protein_g":1.1,"carbs_g":22.8,"fiber_g":2.6,"sugar_g":12.2,"meal_type":"Dessert","default_g_volume":"118g per piece","food_type":"Fruits, Fresh","units":{"tbsp":14.0,"tsp":5.0,"cup":236.0,"piece":118.0}},"Blueberries dried":{"base_grams":40.0,"calories":160.0,"fat_g":1.0,"protein_g":1.0,"carbs_g":32.0,"fiber_g":3.0,"sugar_g":27.0,"meal_type":"Dessert","default_g_volume":"40g in 1/4 cup","food_type":"Fruits, dried","units":{"cup":160.0}},"Blueberries fresh":{"base_grams":80.0,"calories":45.6,"fat_g":0.24,"protein_g":0.56,"carbs_g":11.6,"fiber_g":1.92,"sugar_g":8.0,"meal_type":"Baking","default_g_volume":"0.42cup is 80g","food_type":"Fruits, dried","units":{"cup":190.4762}},"Brazil nuts raw":{"base_grams":30.0,"calories":197.0,"fat_g":19.93,"protein_g":4.3,"carbs_g":3.68,"fiber_g":2.2,"sugar_g":0.7,"meal_type":"Baking","default_g_volume":"10 pcs per 30g","food_type":"Nuts","units":{"piece":3.0}},"Butter":{"base_grams":14.2,"calories":102.0,"fat_g":11.5,"protein_g":0.1,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 14.2g","food_type":"Fats","units":{"tbsp":14.2}},"Cacao nibs":{"base_grams":9.0,"calories":58.0,"fat_g":4.7,"protein_g":1.3,"carbs_g":2.6,"fiber_g":1.5,"sugar_g":0.1,"meal_type":"Baking","default_g_volume":"1 tbsp is 11.34g","food_type":"Topping","units":{"tbsp":11.34}},"Cashews raw":{"base_grams":30.0,"calories":166.0,"fat_g":13.16,"protein_g":5.47,"carbs_g":9.06,"fiber_g":1.0,"sugar_g":1.77,"meal_type":"Baking","default_g_volume":"15 halves in 30g","food_type":"Nuts","units":{"piece":2.0}},"Cashews roasted":{"base_grams":30.0,"calories":180.0,"fat_g":13.7,"protein_g":5.6,"carbs_g":8.7,"fiber_g":2.0,"sugar_g":3.0,"meal_type":"Baking","default_g_volume":"15 halves in 30g","food_type":"Nuts","units":{"piece":2.0}},"Cheese cheddar shredded":{"base_grams":100.0,"calories":403.0,"fat_g":33.14,"protein_g":24.9,"carbs_g":1.28,"fiber_g":0.0,"sugar_g":0.52,"meal_type":"Baking","default_g_volume":"29.4 g in 2 tbsp","food_type":"Cheese","units":{"tbsp":14.7}},"Cheese cream cheese":{"base_grams":100.0,"calories":249.0,"fat_g":34.87,"protein_g":7.55,"carbs_g":2.66,"fiber_g":0.0,"sugar_g":0.2,"meal_type":"Baking","default_g_volume":"1 tbsp is 15g","food_type":"Cheese","units":{"tbsp":15.0}},"Cheese mozzarella shredded":{"base_grams":100.0,"calories":300.0,"fat_g":22.0,"protein_g":22.0,"carbs_g":2.2,"fiber_g":0.0,"sugar_g":1.0,"meal_type":"Baking","default_g_volume":"28.1 g in 2 tbsp","food_type":"Cheese","units":{"tbsp":14.05}},"Cheese parmesan Kraft":{"base_grams":5.0,"calories":20.0,"fat_g":1.5,"protein_g":2.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"2 tsp is 5g","food_type":"Cheese","units":{"tsp":2.5}},"Cherries dried":{"base_grams":15.0,"calories":50.0,"fat_g":0.1,"protein_g":0.2,"carbs_g":12.0,"fiber_g":0.4,"sugar_g":10.0,"meal_type":"Baking","default_g_volume":"6 pieces is 15g","food_type":"Fruits, dried","units":{"piece":2.5}},"Chia seeds":{"base_grams":12.0,"calories":58.0,"fat_g":3.7,"protein_g":2.0,"carbs_g":5.1,"fiber_g":4.1,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"15g in 1 tbsp","food_type":"Seeds","units":{"tbsp":15.0}},"Cinnamon dash":{"base_grams":1.0,"calories":1.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"0.69g in 1/4 tsp","food_type":"Flavoring","units":{"tsp":2.76}},"Cocoa powder Goya":{"base_grams":8.0,"calories":33.0,"fat_g":1.0,"protein_g":2.0,"carbs_g":4.0,"fiber_g":3.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"8 g/ 2 Tbsp","food_type":"Flavoring","units":{"tbsp":4.0}},"Cocoa powder Hershey's":{"base_grams":5.0,"calories":10.0,"fat_g":0.5,"protein_g":1.0,"carbs_g":3.0,"fiber_g":2.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"5 g/ 1 Tbsp","food_type":"Flavoring","units":{"tbsp":5.0}},"Cranberries dried sweetened":{"base_grams":10.0,"calories":31.0,"fat_g":0.14,"protein_g":0.01,"carbs_g":8.24,"fiber_g":0.6,"sugar_g":6.5,"meal_type":"Baking","default_g_volume":"10g in 1 tbsp","food_type":"Fruits, dried","units":{"tbsp":10.0}},"Cream Coconut":{"base_grams":100.0,"calories":220.0,"fat_g":22.0,"protein_g":2.0,"carbs_g":4.0,"fiber_g":0.3,"sugar_g":2.4,"meal_type":"Baking","default_g_volume":"1 cup is 100g","food_type":"Fats","units":{"cup":100.0}},"Cream Nestle All Purpose":{"base_grams":244.0,"calories":675.0,"fat_g":67.5,"protein_g":6.25,"carbs_g":10.0,"fiber_g":0.0,"sugar_g":10.0,"meal_type":"Baking","default_g_volume":"1 cup is 244g","food_type":"Fats","units":{"cup":244.0}},"Cream Sour":{"base_grams":100.0,"calories":214.0,"fat_g":20.96,"protein_g":3.16,"carbs_g":4.27,"fiber_g":0.0,"sugar_g":0.16,"meal_type":"Baking","default_g_volume":"61.3g in 1/4 cup","food_type":"Fats","units":{"cup":245.2}},"Dates dried":{"base_grams":40.0,"calories":111.0,"fat_g":0.06,"protein_g":0.72,"carbs_g":29.99,"fiber_g":2.7,"sugar_g":26.59,"meal_type":"Baking","default_g_volume":"2 pieces is 40g","food_type":"Fruits, dried","units":{"piece":20.0}},"Dutche Baking Bar Matcha":{"base_grams":25.0,"calories":140.0,"fat_g":10.0,"protein_g":2.0,"carbs_g":13.0,"fiber_g":0.0,"sugar_g":13.0,"meal_type":"Baking","default_g_volume":"25 g per square","food_type":"Flavoring","units":{"piece":25.0}},"Dutche Baking Bar Ube":{"base_grams":25.0,"calories":140.0,"fat_g":10.0,"protein_g":2.0,"carbs_g":13.0,"fiber_g":0.0,"sugar_g":10.0,"meal_type":"Baking","default_g_volume":"25 g per square","food_type":"Flavoring","units":{"piece":25.0}},"Dutche Baking Bar Chocolate":{"base_grams":25.0,"calories":140.0,"fat_g":10.0,"protein_g":2.0,"carbs_g":13.0,"fiber_g":0.0,"sugar_g":10.0,"meal_type":"Baking","default_g_volume":"25 g per square","food_type":"Flavoring","units":{"piece":25.0}},"Egg albumen powder":{"base_grams":100.0,"calories":330.0,"fat_g":0.3,"protein_g":80.0,"carbs_g":3.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 tbsp is 7g","food_type":"Protein","units":{"tbsp":7.0}},"Egg plain":{"base_grams":50.0,"calories":74.0,"fat_g":4.97,"protein_g":6.27,"carbs_g":0.4,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 large is 50g","food_type":"Fats","units":{"piece":50.0}},"Erythritol granules":{"base_grams":100.0,"calories":4.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":50.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"51g per 1/4cup","food_type":"Sweetener","units":{"cup":204.0}},"Ferna gelatin powder":{"base_grams":10.0,"calories":40.0,"fat_g":0.0,"protein_g":10.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"9.4g powder per tbsp","food_type":"Protein","units":{"tbsp":9.4}},"Fiber Oat":{"base_grams":12.0,"calories":0.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":9.0,"fiber_g":9.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"9g per tbsp powder","food_type":"Fiber","units":{"tbsp":9.0}},"Fiber Psyllium":{"base_grams":5.38,"calories":18.93,"fat_g":0.235375,"protein_g":0.840625,"carbs_g":3.3625,"fiber_g":2.2865,"sugar_g":0.033625,"meal_type":"Baking","default_g_volume":"16g per tbsp powder","food_type":"Fiber","units":{"tbsp":16.0}},"Figs dried":{"base_grams":8.4,"calories":21.0,"fat_g":0.1,"protein_g":0.3,"carbs_g":5.4,"fiber_g":0.8,"sugar_g":4.0,"meal_type":"Baking","default_g_volume":"1 piece","food_type":"Fruits, dried","units":{"piece":8.4}},"Flour Almond":{"base_grams":24.0,"calories":140.0,"fat_g":12.2,"protein_g":5.2,"carbs_g":4.8,"fiber_g":2.6,"sugar_g":1.0,"meal_type":"Baking","default_g_volume":"1/4 cup is 24 g","food_type":"Flour","units":{"cup":96.0}},"Flour Coconut":{"base_grams":28.0,"calories":120.0,"fat_g":3.0,"protein_g":6.0,"carbs_g":18.0,"fiber_g":10.0,"sugar_g":6.0,"meal_type":"Baking","default_g_volume":"1/4 cup is 28 g","food_type":"Flour","units":{"cup":112.0}},"Flour Oat BRAN":{"base_grams":100.0,"calories":246.0,"fat_g":7.03,"protein_g":17.3,"carbs_g":66.22,"fiber_g":15.4,"sugar_g":1.45,"meal_type":"Baking","default_g_volume":"120g per 1 cup","food_type":"Flour","units":{"cup":120.0}},"Flour Oat WHOLE":{"base_grams":100.0,"calories":404.0,"fat_g":9.12,"protein_g":14.66,"carbs_g":65.7,"fiber_g":6.5,"sugar_g":0.8,"meal_type":"Baking","default_g_volume":"120g per 1 cup","food_type":"Flour","units":{"cup":120.0}},"Garbanzos Chickpeas":{"base_grams":100.0,"calories":365.0,"fat_g":6.0,"protein_g":19.0,"carbs_g":61.0,"fiber_g":17.0,"sugar_g":11.0,"meal_type":"Baking","default_g_volume":"100g per 1/2 cup","food_type":"Protein","units":{"cup":200.0}},"Ghirardelli Semi-sweet Chocolate Chips":{"base_grams":15.0,"calories":70.0,"fat_g":4.5,"protein_g":1.0,"carbs_g":10.0,"fiber_g":1.0,"sugar_g":8.0,"meal_type":"Baking","default_g_volume":"34 chips per 15g Tbsp","food_type":"Topping","units":{"tbsp":15.0,"piece":0.4412}},"Hershey's Semi Sweet Chocolate Chips":{"base_grams":15.0,"calories":70.0,"fat_g":4.0,"protein_g":1.0,"carbs_g":10.0,"fiber_g":1.0,"sugar_g":9.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 15g","food_type":"Topping","units":{"tbsp":15.0}},"Hershey's Spec Dark Choc Chips":{"base_grams":15.0,"calories":70.0,"fat_g":4.5,"protein_g":1.0,"carbs_g":9.0,"fiber_g":1.0,"sugar_g":8.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 15g","food_type":"Topping","units":{"tbsp":15.0}},"Kalamansi Juice pure":{"base_grams":4.0,"calories":10.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":4.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"2g per tbsp","food_type":"Flavoring","units":{"tbsp":2.0}},"Lily's Dark No Sugar Added Chocolate chips":{"base_grams":14.0,"calories":50.0,"fat_g":4.0,"protein_g":1.0,"carbs_g":8.0,"fiber_g":5.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"24 chips per 14g Tbsp","food_type":"Topping","units":{"tbsp":14.0,"piece":0.5833}},"Lindt 70% Dark Chocolate Bar":{"base_grams":10.0,"calories":63.33,"fat_g":4.67,"protein_g":0.67,"carbs_g":4.33,"fiber_g":0.67,"sugar_g":3.0,"meal_type":"Baking","default_g_volume":"1 square is 10g","food_type":"Chocolate","units":{"piece":10.0}},"Lindt 85% Dark Chocolate Bar":{"base_grams":10.0,"calories":56.67,"fat_g":67.0,"protein_g":1.33,"carbs_g":3.67,"fiber_g":1.33,"sugar_g":1.33,"meal_type":"Baking","default_g_volume":"1 square is 10g","food_type":"Chocolate","units":{"piece":10.0}},"Lindt 90% Dark Chocolate Bar":{"base_grams":10.0,"calories":66.67,"fat_g":5.33,"protein_g":1.33,"carbs_g":3.0,"fiber_g":1.67,"sugar_g":0.67,"meal_type":"Baking","default_g_volume":"1 square is 10g","food_type":"Chocolate","units":{"piece":10.0}},"Macadamia nuts raw":{"base_grams":8.4,"calories":60.0,"fat_g":6.3,"protein_g":0.7,"carbs_g":1.2,"fiber_g":0.7,"sugar_g":0.4,"meal_type":"Baking","default_g_volume":"1 Tbsp is 8g","food_type":"Nuts","units":{"tbsp":8.0}},"Mayonnaise Best Foods Real":{"base_grams":13.0,"calories":90.0,"fat_g":10.0,"protein_g":0.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 13g","food_type":"Fats","units":{"tbsp":13.0}},"Mayonnaise Kewpie":{"base_grams":20.0,"calories":140.0,"fat_g":15.2,"protein_g":0.3,"carbs_g":0.9,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 tbsp is 14.4g","food_type":"Fats","units":{"tbsp":14.4}},"Mayonnaise Lady's Choice Real":{"base_grams":15.0,"calories":105.0,"fat_g":11.0,"protein_g":0.0,"carbs_g":1.0,"fiber_g":0.0,"sugar_g":0.5,"meal_type":"Baking","default_g_volume":"1 Tbsp is 15g","food_type":"Fats","units":{"tbsp":15.0}},"Milk Almond Unsweetened":{"base_grams":103.0,"calories":17.0,"fat_g":1.4,"protein_g":0.56,"carbs_g":0.32,"fiber_g":0.2,"sugar_g":0.12,"meal_type":"Baking","default_g_volume":"103 g per 100 ml","food_type":"Milk","units":{"cup":257.0}},"Milk Coconut":{"base_grams":100.0,"calories":220.0,"fat_g":22.0,"protein_g":2.0,"carbs_g":4.0,"fiber_g":0.3,"sugar_g":2.4,"meal_type":"Baking","default_g_volume":"1 cup is 100g","food_type":"Milk","units":{"cup":100.0}},"Milk Lowfat":{"base_grams":100.0,"calories":42.0,"fat_g":0.97,"protein_g":3.37,"carbs_g":5.2,"fiber_g":0.0,"sugar_g":5.2,"meal_type":"Baking","default_g_volume":"100g in 100 ml","food_type":"Milk","units":{}},"Milk Powder Bear Brand":{"base_grams":7.0,"calories":32.0,"fat_g":1.4,"protein_g":1.0,"carbs_g":4.0,"fiber_g":0.0,"sugar_g":3.0,"meal_type":"Baking","default_g_volume":"7g per tbsp","food_type":"Milk","units":{"tbsp":7.0}},"Milk Powder Lowfat":{"base_grams":5.0,"calories":30.0,"fat_g":0.0,"protein_g":3.0,"carbs_g":4.7,"fiber_g":0.0,"sugar_g":4.3,"meal_type":"Baking","default_g_volume":"5g per tbsp","food_type":"Milk","units":{"tbsp":5.0}},"Monkfruit Erythritol granules":{"base_grams":8.0,"calories":1.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 8g","food_type":"Sweetener","units":{"tbsp":8.0}},"Monkfruit Erythritol":{"base_grams":100.0,"calories":0.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":100.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"12.5 g per tbsp","food_type":"Sweetener","units":{"tbsp":12.5,"tsp":4.0,"cup":200.0}},"Oat bran whole":{"base_grams":54.75,"calories":22.0,"fat_g":0.475,"protein_g":1.75,"carbs_g":6.25,"fiber_g":1.425,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1/4 cup is 54.75g","food_type":"Fiber","units":{"cup":219.0}},"Olive oil":{"base_grams":28.0,"calories":238.0,"fat_g":28.0,"protein_g":0.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"2 Tbsp is 28g","food_type":"Fats","units":{"tbsp":14.0}},"Pancake mix, Magnolia":{"base_grams":180.0,"calories":675.0,"fat_g":9.0,"protein_g":13.5,"carbs_g":139.5,"fiber_g":4.5,"sugar_g":49.5,"meal_type":"Baking","default_g_volume":"180g in 1 pack 3/4 cup","food_type":"Mix","units":{"piece":180.0}},"Peanut butter Lene":{"base_grams":12.0,"calories":90.0,"fat_g":5.5,"protein_g":6.0,"carbs_g":4.0,"fiber_g":1.0,"sugar_g":1.0,"meal_type":"Baking","default_g_volume":"1 Tbsp is 12g","food_type":"Fats","units":{"tbsp":12.0}},"Peanut butter Skippy":{"base_grams":32.0,"calories":190.0,"fat_g":16.0,"protein_g":7.0,"carbs_g":6.0,"fiber_g":2.0,"sugar_g":3.0,"meal_type":"Baking","default_g_volume":"2 Tbsp is 32g","food_type":"Fats","units":{"tbsp":16.0}},"Pecans raw":{"base_grams":30.0,"calories":207.0,"fat_g":21.59,"protein_g":2.75,"carbs_g":4.16,"fiber_g":2.9,"sugar_g":1.19,"meal_type":"Baking","default_g_volume":"1.5 g  per piece","food_type":"Nuts","units":{"piece":1.5}},"Protein powder pea":{"base_grams":20.0,"calories":80.0,"fat_g":1.5,"protein_g":15.0,"carbs_g":1.0,"fiber_g":1.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"10g per scoop","food_type":"Protein","units":{"piece":10.0}},"Pumpkin Squash seeds":{"base_grams":10.0,"calories":54.0,"fat_g":4.58,"protein_g":2.45,"carbs_g":1.75,"fiber_g":0.4,"sugar_g":0.1,"meal_type":"Baking","default_g_volume":"1 tbsp is 7.44g","food_type":"Seeds","units":{"tbsp":7.44}},"Raisins golden":{"base_grams":9.7,"calories":29.0,"fat_g":0.0485,"protein_g":0.3,"carbs_g":7.7,"fiber_g":0.4,"sugar_g":5.7,"meal_type":"Baking","default_g_volume":"1 Tbsp is 9.7g","food_type":"Fruits, dried","units":{"tbsp":9.7}},"Raisins sultanas":{"base_grams":10.0,"calories":30.0,"fat_g":0.05,"protein_g":0.34,"carbs_g":7.95,"fiber_g":0.4,"sugar_g":5.92,"meal_type":"Baking","default_g_volume":"1 Tbsp is 10g","food_type":"Fruits, dried","units":{"tbsp":10.0}},"Reese's peanut butter chips":{"base_grams":15.0,"calories":80.0,"fat_g":4.5,"protein_g":3.0,"carbs_g":8.0,"fiber_g":0.5,"sugar_g":6.0,"meal_type":"Baking","default_g_volume":"45 pcs is 15g Tbsp","food_type":"Topping","units":{"piece":0.3333}},"Salt pinch":{"base_grams":0.5,"calories":0.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":0.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"0.575g in 1/4 tsp","food_type":"Flavoring","units":{"tsp":2.3}},"Sesame seeds":{"base_grams":10.0,"calories":57.0,"fat_g":4.8,"protein_g":1.7,"carbs_g":2.6,"fiber_g":1.7,"sugar_g":0.05,"meal_type":"Baking","default_g_volume":"1 tbsp is 9g","food_type":"Seeds","units":{"tbsp":9.0}},"Stevia drops":{"base_grams":1.0,"calories":2.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":1.0,"fiber_g":0.5,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1g is 2 squirts","food_type":"Sweetener","units":{"piece":0.5}},"Stevia Erythritol":{"base_grams":100.0,"calories":0.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":100.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"12.5 g per tbsp","food_type":"Sweetener","units":{"tbsp":12.5,"tsp":4.0,"cup":200.0}},"Sunflower seeds roasted hulled":{"base_grams":10.0,"calories":57.0,"fat_g":4.96,"protein_g":2.28,"carbs_g":1.88,"fiber_g":1.0,"sugar_g":0.26,"meal_type":"Baking","default_g_volume":"1 tbsp is 10g","food_type":"Seeds","units":{"tbsp":10.0}},"Unsweetened Chocolate Baking Bar":{"base_grams":25.0,"calories":140.0,"fat_g":10.0,"protein_g":1.0,"carbs_g":14.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"look at package","food_type":"Flavoring","units":{}},"Vanilla extract":{"base_grams":4.2,"calories":2.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":0.5,"fiber_g":0.0,"sugar_g":0.5,"meal_type":"Baking","default_g_volume":"1 tsp is 4.2g","food_type":"Flavoring","units":{"tsp":4.2}},"Walnuts raw":{"base_grams":10.0,"calories":65.0,"fat_g":6.5,"protein_g":1.5,"carbs_g":1.4,"fiber_g":0.7,"sugar_g":0.3,"meal_type":"Baking","default_g_volume":"14 halves in 30g","food_type":"Nuts","units":{"piece":2.1429}},"Xanthan gum":{"base_grams":0.8,"calories":5.0,"fat_g":0.0,"protein_g":0.0,"carbs_g":0.8,"fiber_g":0.8,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1/2 tsp is 0.8g","food_type":"Fiber","units":{"tsp":1.6}},"Yogurt BTIC NF Greek":{"base_grams":100.0,"calories":75.0,"fat_g":0.4,"protein_g":6.5,"carbs_g":11.4,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 cup is 245g","food_type":"Yogurt","units":{"cup":245.0}},"Yogurt DVF Greek":{"base_grams":156.0,"calories":80.0,"fat_g":3.5,"protein_g":4.0,"carbs_g":8.0,"fiber_g":0.0,"sugar_g":0.0,"meal_type":"Baking","default_g_volume":"1 cup is 280g","food_type":"Yogurt","units":{"cup":280.0}},"Yogurt Emborg":{"base_grams":104.0,"calories":75.0,"fat_g":3.5,"protein_g":3.7,"carbs_g":7.1,"fiber_g":0.0,"sugar_g":5.1,"meal_type":"Baking","default_g_volume":"1 cup is 245g","food_type":"Yogurt","units":{"cup":245.0}},"Yogurt Nestle Plain":{"base_grams":125.0,"calories":73.0,"fat_g":3.0,"protein_g":3.4,"carbs_g":8.0,"fiber_g":0.0,"sugar_g":4.0,"meal_type":"Baking","default_g_volume":"1 cup is 245g","food_type":"Yogurt","units":{"cup":245.0}}};
+
+// Precompute per-gram macro values, same as the desktop app's Ingredient class.
+// Factored into a function so both the built-in list and a user-supplied
+// ingredients.json (via the Update Ingredients button below) go through the
+// same logic.
+function buildIngredients(raw) {
+  const out = {};
+  for (const [name, data] of Object.entries(raw)) {
+    const baseGrams = data.base_grams;
+    const perGram = {};
+    for (const [key] of MACRO_FIELDS) perGram[key] = (data[key] || 0) / baseGrams;
+    out[name] = {
+      name,
+      perGram,
+      units: data.units || {},
+      defaultGVolume: data.default_g_volume || "",
+    };
+  }
+  return out;
+}
+
+// A custom ingredients.json loaded via Update Ingredients is remembered in
+// this browser (localStorage) so it survives page reloads, without needing
+// to re-run the Python build script. It only affects this browser/device.
+const INGREDIENTS_STORAGE_KEY = "macro-calc-custom-ingredients";
+let usingCustomIngredients = false;
+let INGREDIENTS;
+(function initIngredients() {
+  const saved = localStorage.getItem(INGREDIENTS_STORAGE_KEY);
+  if (saved) {
+    try {
+      INGREDIENTS = buildIngredients(JSON.parse(saved));
+      usingCustomIngredients = true;
+      return;
+    } catch (err) {
+      console.error("Saved ingredients.json override was invalid, falling back to the built-in list.", err);
+    }
+  }
+  INGREDIENTS = buildIngredients(RAW_INGREDIENTS);
+})();
+
+
+function availableUnits(ing) {
+  return UNIT_ORDER.filter(u => u === "g" || u in ing.units);
+}
+function gramsFor(ing, amount, unit) {
+  if (unit === "g") return amount;
+  const perUnit = ing.units[unit];
+  if (!perUnit) return null;
+  return amount * perUnit;
+}
+function macrosForGrams(ing, grams) {
+  const out = {};
+  for (const [key] of MACRO_FIELDS) out[key] = ing.perGram[key] * grams;
+  return out;
+}
+
+// ---------------- state ----------------
+let recipeRows = [];       // {name, entered, grams, macros}
+let selectedRows = new Set();
+let currentNames = [];
+let cursorIndex = -1;
+
+// ---------------- theme ----------------
+const root = document.documentElement;
+const themeToggle = document.getElementById("theme-toggle");
+function applyTheme(mode) {
+  root.setAttribute("data-theme", mode);
+  themeToggle.checked = mode === "dark";
+}
+(function initTheme() {
+  const saved = localStorage.getItem("macro-calc-theme");
+  if (saved) { applyTheme(saved); return; }
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(prefersDark ? "dark" : "light");
+})();
+themeToggle.addEventListener("change", () => {
+  const mode = themeToggle.checked ? "dark" : "light";
+  applyTheme(mode);
+  localStorage.setItem("macro-calc-theme", mode);
+});
+
+// ---------------- search ----------------
+const searchInput = document.getElementById("search-input");
+const resultsEl = document.getElementById("results");
+const selectedNameEl = document.getElementById("selected-name");
+const defaultNoteEl = document.getElementById("default-note");
+const unitSelect = document.getElementById("unit-select");
+const amountInput = document.getElementById("amount-input");
+amountInput.addEventListener("input", () => {
+  if (parseFloat(amountInput.value) < 0) amountInput.value = "0";
+});
+
+function renderResults(names) {
+  currentNames = names;
+  cursorIndex = -1;
+  resultsEl.innerHTML = "";
+  for (const name of names) {
+    const div = document.createElement("div");
+    div.className = "result-item";
+    div.textContent = name;
+    div.addEventListener("click", () => selectIngredient(name));
+    resultsEl.appendChild(div);
+  }
+}
+function filterIngredients() {
+  const typed = searchInput.value.toLowerCase().trim();
+  let names = Object.keys(INGREDIENTS).sort();
+  if (typed) names = names.filter(n => n.toLowerCase().includes(typed));
+  renderResults(names);
+}
+function highlightCursor(index) {
+  const items = resultsEl.children;
+  if (cursorIndex >= 0 && cursorIndex < items.length) items[cursorIndex].classList.remove("cursor");
+  cursorIndex = index;
+  if (index >= 0 && index < items.length) {
+    items[index].classList.add("cursor");
+    items[index].scrollIntoView({ block: "nearest" });
+  }
+}
+function selectIngredient(name) {
+  const ing = INGREDIENTS[name];
+  if (!ing) return;
+  selectedNameEl.textContent = name;
+  unitSelect.innerHTML = "";
+  for (const u of availableUnits(ing)) {
+    const opt = document.createElement("option");
+    opt.value = u; opt.textContent = u;
+    unitSelect.appendChild(opt);
+  }
+  unitSelect.value = "g";
+  defaultNoteEl.textContent = ing.defaultGVolume ? `Reference: ${ing.defaultGVolume}` : "";
+  const idx = currentNames.indexOf(name);
+  if (idx !== -1) highlightCursor(idx);
+}
+searchInput.addEventListener("input", filterIngredients);
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    if (currentNames.length) highlightCursor(Math.min(cursorIndex + 1, currentNames.length - 1));
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    if (currentNames.length) highlightCursor(Math.max(cursorIndex - 1, 0));
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    if (cursorIndex >= 0 && cursorIndex < currentNames.length) {
+      selectIngredient(currentNames[cursorIndex]);
+    }
+    amountInput.focus();
+    amountInput.select();
+  }
+});
+
+// ---------------- recipe table ----------------
+const tableHeadRow = document.getElementById("table-head-row");
+const recipeBody = document.getElementById("recipe-body");
+const HEADINGS = ["Food", "You Entered", "Grams", ...MACRO_FIELDS.map(f => f[1])];
+for (const h of HEADINGS) {
+  const th = document.createElement("th");
+  th.textContent = h;
+  tableHeadRow.appendChild(th);
+}
+
+function addIngredient() {
+  const name = selectedNameEl.textContent.trim();
+  const ing = INGREDIENTS[name];
+  if (!ing) { alert("Search and click an ingredient from the list first."); return; }
+  const amount = parseFloat(amountInput.value);
+  if (isNaN(amount)) { alert("Enter a number for the amount."); return; }
+  if (amount <= 0) { alert("Amount must be greater than zero."); return; }
+  const unit = unitSelect.value;
+  const grams = gramsFor(ing, amount, unit);
+  if (grams === null) {
+    alert(`'${name}' doesn't have a known '${unit}' conversion. Use grams instead.`);
+    return;
+  }
+  const macros = macrosForGrams(ing, grams);
+  recipeRows.push({ name, entered: `${trimNumber(amount)} ${unit}`, grams, macros });
+  amountInput.value = "0";
+  renderTable();
+}
+function trimNumber(n) {
+  return Number(n.toFixed(6)).toString();
+}
+function renderTable() {
+  recipeBody.innerHTML = "";
+  if (recipeRows.length === 0) {
+    recipeBody.innerHTML = '<tr class="empty-row"><td colspan="9">No ingredients yet &mdash; search and add one above.</td></tr>';
+  } else {
+    recipeRows.forEach((row, idx) => {
+      const tr = document.createElement("tr");
+      if (selectedRows.has(idx)) tr.classList.add("row-selected");
+      const cells = [row.name, row.entered, row.grams.toFixed(1),
+        ...MACRO_FIELDS.map(([key]) => row.macros[key].toFixed(1))];
+      for (const c of cells) {
+        const td = document.createElement("td");
+        td.textContent = c;
+        tr.appendChild(td);
+      }
+      tr.addEventListener("click", () => {
+        if (selectedRows.has(idx)) selectedRows.delete(idx); else selectedRows.add(idx);
+        renderTable();
+      });
+      recipeBody.appendChild(tr);
+    });
+  }
+  renderTotals();
+}
+function removeSelected() {
+  if (selectedRows.size === 0) return;
+  recipeRows = recipeRows.filter((_, idx) => !selectedRows.has(idx));
+  selectedRows = new Set();
+  renderTable();
+}
+document.addEventListener("keydown", (e) => {
+  if ((e.key === "Delete" || e.key === "Backspace") &&
+      !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName) &&
+      selectedRows.size > 0) {
+    e.preventDefault();
+    removeSelected();
+  }
+});
+
+// ---------------- totals ----------------
+const totalsGrid = document.getElementById("totals-grid");
+const servingsInput = document.getElementById("servings-input");
+function buildTotalsGrid() {
+  totalsGrid.innerHTML = "";
+  totalsGrid.appendChild(document.createElement("div"));
+  for (const [, label] of MACRO_FIELDS) {
+    const d = document.createElement("div");
+    d.className = "col-head";
+    d.textContent = label;
+    totalsGrid.appendChild(d);
+  }
+  const totalLabel = document.createElement("div");
+  totalLabel.className = "row-label"; totalLabel.textContent = "Recipe Total";
+  totalsGrid.appendChild(totalLabel);
+  const totalVals = MACRO_FIELDS.map(() => {
+    const d = document.createElement("div");
+    d.className = "val mono";
+    totalsGrid.appendChild(d);
+    return d;
+  });
+  const perLabel = document.createElement("div");
+  perLabel.className = "row-label"; perLabel.textContent = "Per Serving";
+  totalsGrid.appendChild(perLabel);
+  const perVals = MACRO_FIELDS.map(() => {
+    const d = document.createElement("div");
+    d.className = "val mono";
+    totalsGrid.appendChild(d);
+    return d;
+  });
+  return { totalVals, perVals };
+}
+const { totalVals, perVals } = buildTotalsGrid();
+function renderTotals() {
+  const totals = {};
+  for (const [key] of MACRO_FIELDS) totals[key] = 0;
+  for (const row of recipeRows) for (const [key] of MACRO_FIELDS) totals[key] += row.macros[key];
+  let servings = parseFloat(servingsInput.value);
+  if (isNaN(servings) || servings <= 0) servings = 1;
+  MACRO_FIELDS.forEach(([key], i) => {
+    totalVals[i].textContent = totals[key].toFixed(1);
+    perVals[i].textContent = (totals[key] / servings).toFixed(2);
+  });
+}
+servingsInput.addEventListener("input", renderTotals);
+
+// ---------------- save / load / export ----------------
+function download(filename, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+function computeTotalsAndServings() {
+  const totals = {};
+  for (const [key] of MACRO_FIELDS) totals[key] = 0;
+  for (const row of recipeRows) for (const [key] of MACRO_FIELDS) totals[key] += row.macros[key];
+  let servings = parseFloat(servingsInput.value);
+  if (isNaN(servings) || servings <= 0) servings = 1;
+  return { totals, servings };
+}
+document.getElementById("save-btn").addEventListener("click", () => {
+  const header = ["Food", "You Entered", "Grams", ...MACRO_FIELDS.map(f => f[1])];
+  const rows = [header];
+  for (const row of recipeRows) {
+    rows.push([row.name, row.entered, Number(row.grams.toFixed(1)),
+      ...MACRO_FIELDS.map(([key]) => Number(row.macros[key].toFixed(1)))]);
+  }
+  const { totals, servings } = computeTotalsAndServings();
+  rows.push([]);
+  rows.push(["Servings", servings]);
+  rows.push([]);
+  rows.push(header);
+  rows.push(["Recipe Total", "", "", ...MACRO_FIELDS.map(([key]) => Number(totals[key].toFixed(1)))]);
+  rows.push(["Per Serving", "", "", ...MACRO_FIELDS.map(([key]) => Number((totals[key] / servings).toFixed(2)))]);
+
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws["!cols"] = [{ wch: 26 }, { wch: 14 }, { wch: 9 }, ...MACRO_FIELDS.map(() => ({ wch: 11 }))];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Recipe");
+  XLSX.writeFile(wb, "recipe.xlsx");
+});
+document.getElementById("csv-btn").addEventListener("click", () => {
+  const csvRow = (cells) => cells.map(c => `"${String(c).replace(/"/g, '""')}"`).join(",");
+  const header = ["Food", "You Entered", "Grams", ...MACRO_FIELDS.map(f => f[1])];
+  const lines = [csvRow(header)];
+  for (const row of recipeRows) {
+    const cells = [row.name, row.entered, row.grams.toFixed(1),
+      ...MACRO_FIELDS.map(([key]) => row.macros[key].toFixed(1))];
+    lines.push(csvRow(cells));
+  }
+  const { totals, servings } = computeTotalsAndServings();
+  lines.push("");
+  lines.push(csvRow(["Servings", servings]));
+  lines.push("");
+  lines.push(csvRow(header));
+  lines.push(csvRow(["Recipe Total", "", "", ...MACRO_FIELDS.map(([key]) => totals[key].toFixed(1))]));
+  lines.push(csvRow(["Per Serving", "", "", ...MACRO_FIELDS.map(([key]) => (totals[key] / servings).toFixed(2))]));
+
+  download("recipe.csv", lines.join("\n"), "text/csv");
+});
+const fileInput = document.getElementById("file-input");
+document.getElementById("load-btn").addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = new Uint8Array(reader.result);
+      const wb = XLSX.read(data, { type: "array" });
+      const sheet = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+      const newRows = [];
+      for (let i = 1; i < rows.length; i++) {
+        const r = rows[i];
+        if (!r || r.length === 0 || r[0] === "") break; // ingredients end at the first blank row
+        const macros = {};
+        MACRO_FIELDS.forEach(([key], idx) => { macros[key] = Number(r[3 + idx]) || 0; });
+        newRows.push({ name: String(r[0]), entered: String(r[1] ?? ""), grams: Number(r[2]) || 0, macros });
+      }
+      let loadedServings = null;
+      for (const r of rows) {
+        if (r && String(r[0]) === "Servings") { loadedServings = Number(r[1]) || Number(r[3]) || null; break; }
+      }
+      if (recipeRows.length > 0 && !confirm("This will replace the ingredients currently in your recipe list. Continue?")) return;
+      recipeRows = newRows;
+      if (loadedServings) servingsInput.value = loadedServings;
+      selectedRows = new Set();
+      renderTable();
+    } catch (err) {
+      alert("Couldn't read that file — make sure it's a recipe.xlsx saved from this calculator.");
+      console.error(err);
+    }
+  };
+  reader.readAsArrayBuffer(file);
+  fileInput.value = "";
+});
+
+document.getElementById("add-btn").addEventListener("click", addIngredient);
+document.getElementById("remove-btn").addEventListener("click", removeSelected);
+
+// ---------------- ingredient data management ----------------
+const ingredientsStatusEl = document.getElementById("ingredients-status");
+function refreshIngredientsStatus() {
+  const count = Object.keys(INGREDIENTS).length;
+  ingredientsStatusEl.textContent = usingCustomIngredients
+    ? `${count} ingredients (custom list, saved in this browser)`
+    : `${count} ingredients (built-in list)`;
+}
+function clearSelection() {
+  selectedNameEl.textContent = "(none selected)";
+  unitSelect.innerHTML = "";
+  defaultNoteEl.textContent = "";
+}
+const ingredientsFileInput = document.getElementById("ingredients-file-input");
+document.getElementById("update-ingredients-btn").addEventListener("click", () => ingredientsFileInput.click());
+
+// Converts an ingredients.csv (same columns as update_ingredients.py expects)
+// into the same raw shape as ingredients.json, so both formats feed into
+// buildIngredients() identically.
+function parseCsvToRawIngredients(csvText) {
+  const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+  const num = (v) => {
+    const s = (v ?? "").toString().trim();
+    return s === "" ? null : parseFloat(s);
+  };
+  const unitColumns = [
+    ["Grams per tbsp", "tbsp"], ["Grams per tsp", "tsp"],
+    ["Grams per cup", "cup"], ["Grams per piece", "piece"],
+  ];
+  const raw = {};
+  for (const row of parsed.data) {
+    const name = (row["Food"] || "").trim();
+    if (!name) continue;
+    const units = {};
+    for (const [col, unit] of unitColumns) {
+      const v = num(row[col]);
+      if (v !== null && !isNaN(v)) units[unit] = v;
+    }
+    raw[name] = {
+      base_grams: num(row["Grams total"]),
+      calories: num(row["Calories"]) || 0,
+      fat_g: num(row["Fat g"]) || 0,
+      protein_g: num(row["Protein g"]) || 0,
+      carbs_g: num(row["Carbs g"]) || 0,
+      fiber_g: num(row["Fiber g"]) || 0,
+      sugar_g: num(row["Sugar g"]) || 0,
+      meal_type: (row["Meal Type"] || "").trim(),
+      default_g_volume: (row["Default g/volume"] || "").trim(),
+      food_type: (row["Food type"] || "").trim(),
+      units,
+    };
+  }
+  return raw;
+}
+
+ingredientsFileInput.addEventListener("change", () => {
+  const file = ingredientsFileInput.files[0];
+  if (!file) return;
+  const isCsv = file.name.toLowerCase().endsWith(".csv");
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const raw = isCsv ? parseCsvToRawIngredients(reader.result) : JSON.parse(reader.result);
+      const sample = Object.values(raw)[0];
+      if (typeof raw !== "object" || raw === null || Array.isArray(raw) ||
+          Object.keys(raw).length === 0 || !sample || typeof sample.base_grams !== "number") {
+        throw new Error("Doesn't look like a valid ingredient file");
+      }
+      INGREDIENTS = buildIngredients(raw);
+      usingCustomIngredients = true;
+      localStorage.setItem(INGREDIENTS_STORAGE_KEY, JSON.stringify(raw));
+      renderResults(Object.keys(INGREDIENTS).sort());
+      clearSelection();
+      refreshIngredientsStatus();
+      alert(`Loaded ${Object.keys(INGREDIENTS).length} ingredients from ${file.name}. This will stay loaded in this browser even after you close it — no need to redo this next time, unless you switch browsers or devices.`);
+    } catch (err) {
+      alert("Couldn't read that file — make sure it's a valid ingredients.csv or ingredients.json.");
+      console.error(err);
+    }
+  };
+  reader.readAsText(file);
+  ingredientsFileInput.value = "";
+});
+document.getElementById("reset-ingredients-btn").addEventListener("click", () => {
+  if (!usingCustomIngredients) { alert("Already using the built-in ingredient list."); return; }
+  if (!confirm("Reset to the built-in ingredient list bundled with this page? This only affects this browser.")) return;
+  localStorage.removeItem(INGREDIENTS_STORAGE_KEY);
+  INGREDIENTS = buildIngredients(RAW_INGREDIENTS);
+  usingCustomIngredients = false;
+  renderResults(Object.keys(INGREDIENTS).sort());
+  clearSelection();
+  refreshIngredientsStatus();
+});
+
+// ---------------- init ----------------
+renderResults(Object.keys(INGREDIENTS).sort());
+renderTable();
+refreshIngredientsStatus();
+</script>
+</body>
+</html>
